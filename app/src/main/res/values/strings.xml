@@ -1,0 +1,940 @@
+<resources>
+    <string name="app_name">Fornax</string>
+
+    <color name="blue">#2196F3</color>
+    <color name="blued">#1976D2</color>
+    <color name="orange">#673AB7</color>
+    <color name="oranged">#512DA8</color>
+    <color name="white">#fff</color>
+    <color name="whited">#9E9E9E</color>
+    <color name="startbarcolor">#bdbdbd</color>
+    <color name="dark">#212121</color>
+    <color name="trans">#00000000</color>
+
+    <string name="description">Free wallpapers, made by everyone, for everyone.</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_wall_picker">Wallpapers</string>
+    <string name="title_activity_wallpaper_view">Wallpaper</string>
+
+    <string name="changelog" formatted="false">
+        - fixed a small bug with the image downloader
+    </string>
+
+    <string-array name="people_names" formatted="false">
+        <item>James Fenn</item>
+        <item>Brice Seibert</item>
+        <item>Anas Khan</item>
+        <item>Žan Černe</item>
+        <item>Greg Ives</item>
+        <item>Radek Bledowski</item>
+        <item>Colin Simone</item>
+    </string-array>
+
+    <string-array name="people_icons" formatted="false">
+        <item>@mipmap/jamesfennic</item>
+        <item>@mipmap/briceseibertic</item>
+        <item>@mipmap/anascircle</item>
+        <item>@mipmap/zan</item>
+        <item>@mipmap/greg</item>
+        <item>@mipmap/radekxmen</item>
+        <item>@mipmap/colin</item>
+    </string-array>
+
+    <string-array name="name_james" formatted="false">
+        <item>Googlish Header</item>
+        <item>Mist</item>
+        <item>Red Lines</item>
+        <item>Red V</item>
+        <item>Orange V</item>
+        <item>Purple V</item>
+        <item>Blue V</item>
+        <item>Black V</item>
+        <item>Yellow V</item>
+        <item>Gray V</item>
+        <item>Black-Yellow Slash</item>
+        <item>Orange-White Slash</item>
+        <item>Purple Slash</item>
+        <item>Black-Blue Slash</item>
+        <item>Blue-Black Slash</item>
+        <item>Blue Circle</item>
+        <item>Red Circle</item>
+        <item>Purple Circle</item>
+        <item>Yellow Circle</item>
+        <item>Gray Circle</item>
+        <item>Orange-Black Circle</item>
+        <item>Red Diamond</item>
+        <item>Purple Diamond</item>
+        <item>Blue-Black Diamond</item>
+        <item>Blue Diamond</item>
+        <item>Gray Hills</item>
+        <item>Red Hills</item>
+        <item>Green Mountains</item>
+        <item>Red Mountains</item>
+        <item>Blue Shadow</item>
+        <item>Cyan Shadow</item>
+        <item>Green Shadow</item>
+        <item>Orange Shadow</item>
+        <item>Purple Shadow</item>
+        <item>Red Shadow</item>
+    </string-array>
+
+    <string-array name="url_james" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/googlish_header.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/mist.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_lines.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/orange_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/purple_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/black_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/yellow-blue_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/gray_v.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/black-yellow_slash.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/orange-white_slash.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/purple_slash.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/black-blue_slash.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue-black_slash.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/purple_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/yellow_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/gray_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/orange-black_circle.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_diamond.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/purple_diamond.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue-black_diamond.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue_diamond.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/gray_hills.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_hills.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/green_mountains.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_mountains.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/blue_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/cyan_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/green_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/orange_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/purple_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/james_fenn/red_shadow.png</item>
+    </string-array>
+
+    <string-array name="name_brice" formatted="false">
+        <item>Blue Lighthouse*</item>
+        <item>Dark Blue Lighthouse*</item>
+        <item>Gray Lighthouse*</item>
+        <item>Orange Lighthouse*</item>
+        <item>Yellow Lighthouse*</item>
+        <item>Orange Shed*</item>
+        <item>Purple Arch*</item>
+        <item>Fighter Jet*</item>
+        <item>Blue Island*</item>
+        <item>Blue Island 2*</item>
+        <item>Dark Blue Island*</item>
+        <item>Water Droplet*</item>
+        <item>Blue Rain*</item>
+        <item>Dark City*</item>
+        <item>Dark City 2*</item>
+        <item>Marshmallow*</item>
+        <item>Countryside*</item>
+        <item>Valley*</item>
+        <item>Bridge Valley*</item>
+        <item>Purple Tilt*</item>
+        <item>Orange Tilt*</item>
+        <item>Material Tilt*</item>
+        <item>Rocket*</item>
+        <item>Dark Rocket*</item>
+        <item>Fast Rocket*</item>
+        <item>Paris*</item>
+        <item>Paris Banana*</item>
+        <item>Red Shadow*</item>
+        <item>Redder Shadow*</item>
+        <item>Orange Shadow*</item>
+        <item>Dark Shadow*</item>
+        <item>Red Material*</item>
+        <item>Light Blue Material*</item>
+        <item>Blue Material*</item>
+        <item>Dark Blue Material*</item>
+        <item>Purple Material*</item>
+        <item>Green Material*</item>
+        <item>Yellow Material*</item>
+        <item>Material Layers*</item>
+        <item>Material Rainbow*</item>
+        <item>Material Rainbow Dark*</item>
+        <item>Material Stripes*</item>
+        <item>Bright Stripes*</item>
+        <item>Cobblestone Stripes*</item>
+        <item>Stripey Lines*</item>
+        <item>Cold Mountain*</item>
+        <item>Blue Mountain*</item>
+        <item>Ice Mountain*</item>
+        <item>Green Mountain*</item>
+        <item>Night Mountain*</item>
+        <item>Sandy Mountain*</item>
+        <item>Purple Mountains Morning*</item>
+        <item>Purple Mountains Day*</item>
+        <item>Purple Mountains Evening*</item>
+        <item>Purple Mountains Night*</item>
+        <item>Orange Mountain Range*</item>
+        <item>Purple Mountain Range*</item>
+        <item>Dark Brown Mountain Range*</item>
+        <item>Brown Mountain Range*</item>
+        <item>Fiery Mountain Range*</item>
+        <item>Intersection*</item>
+        <item>Top Intersection*</item>
+        <item>Bottom Intersection*</item>
+        <item>Horizontal Intersection*</item>
+        <item>Vertical Intersection*</item>
+        <item>Night Road*</item>
+        <item>Earth*</item>
+    </string-array>
+
+    <string-array name="url_brice" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_lighthouse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_blue_lighthouse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/gray_lighthouse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/orange_lighthouse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/yellow_lighthouse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/orange_shed.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_arch.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/fighter_jet.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_island.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_island_2.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_blue_island.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/water_droplet.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_rain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_city.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_city_2.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/marshmallow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/countryside.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/valley.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/bridge_valley.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_tilt.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/orange_tilt.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/material_tilt.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/rocket.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_rocket.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/fast_rocket.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/paris.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/paris_banana.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/red_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/redder_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/orange_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_shadow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/red_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/light_blue_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_blue_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_material.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/green_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/yellow_material.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/material_layers.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/material_rainbow.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/material_rainbow_dark.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/material_stripes.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/bright_stripes.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/cobblestone_stripes.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/stripey_lines.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/cold_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/blue_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/ice_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/dark_green_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/night_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/sandy_mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_mountains_morning.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_mountains_day.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_mountains_sunset.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/purple_mountains_night.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/mountain_range_orange.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/mountain_range_purple.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/mountain_range_dark_brown.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/mountain_range_brown.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/mountain_range_fire.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/intersection.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/top_intersection.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/bottom_intersection.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/horizontal_intersection.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/vertical_intersection.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/night_road.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/brice_seibert/earth.png</item>
+    </string-array>
+
+    <string-array name="name_anas" formatted="false">
+        <item>Cashier*</item>
+        <item>Coffee*</item>
+        <item>Blue Meteor*</item>
+        <item>Dark Purple Meteor*</item>
+        <item>Green Meteor*</item>
+        <item>Light Blue Meteor*</item>
+        <item>Orange Meteor*</item>
+        <item>Pink Meteor*</item>
+        <item>Purple Meteor*</item>
+        <item>Red Meteor*</item>
+        <item>Blue Logo*</item>
+        <item>Green Logo*</item>
+        <item>Orange Logo*</item>
+        <item>Purple Logo*</item>
+        <item>Red Logo*</item>
+        <item>Yellow Logo*</item>
+        <item>Satellite*</item>
+        <item>Blue Planet*</item>
+        <item>Dark Planet*</item>
+        <item>Pink Planet*</item>
+        <item>Yellow Planet*</item>
+        <item>Earth*</item>
+        <item>Hills*</item>
+        <item>Flowers*</item>
+        <item>Dog*</item>
+        <item>Sunny*</item>
+        <item>Sun*</item>
+        <item>Partly Cloudy*</item>
+        <item>Cloudy*</item>
+        <item>Thunderstorm*</item>
+        <item>Snow*</item>
+        <item>Night Clouds*</item>
+        <item>Moon*</item>
+        <item>Full Moon*</item>
+        <item>Blue Circles*</item>
+        <item>Green Circles*</item>
+        <item>Red Circles*</item>
+        <item>Yellow Circles*</item>
+    </string-array>
+
+    <string-array name="url_anas" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/cashier.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/coffee.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/blue_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/dark_purple_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/green_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/light_blue_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/orange_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/pink_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/purple_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/red_meteor.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/blue_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/green_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/orange_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/purple_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/red_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/yellow_logo.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/satellite.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/blue_planet.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/dark_planet.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/pink_planet.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/yellow_planet.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/earth.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/hills.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/flowers.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/dog.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/sunny.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/sun.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/partly_cloudy.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/cloudy.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/thunderstorm.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/snow.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/night_clouds.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/moon.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/full_moon.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/blue_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/green_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/red_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/anas_khan/yellow_circles.jpg</item>
+    </string-array>
+
+    <string-array name="name_zan" formatted="false">
+        <item>Winter*</item>
+        <item>Night Winter*</item>
+        <item>Blue Minimal*</item>
+        <item>Cyan Minimal*</item>
+        <item>Green Minimal*</item>
+        <item>Orange Minimal*</item>
+        <item>Purple Minimal*</item>
+        <item>White Minimal*</item>
+        <item>Red Minimal*</item>
+        <item>Yellow Minimal*</item>
+        <item>Apple*</item>
+        <item>Dark Apple*</item>
+        <item>Blue Flip*</item>
+        <item>Cyan Flip*</item>
+        <item>Green Flip*</item>
+        <item>Orange Flip*</item>
+        <item>Purple Flip*</item>
+        <item>White Flip*</item>
+        <item>Red Flip*</item>
+        <item>Yellow Flip*</item>
+        <item>London*</item>
+        <item>Blue Balloon*</item>
+        <item>Dark Blue Balloon*</item>
+        <item>Orange Balloon*</item>
+        <item>Dark Orange Balloon*</item>
+        <item>Blue Overlap*</item>
+        <item>Brown Overlap*</item>
+        <item>Dark Brown Overlap*</item>
+        <item>Green Overlap*</item>
+        <item>Light Blue Overlap*</item>
+        <item>Orange Overlap*</item>
+        <item>Red Vent*</item>
+        <item>Blue Vent*</item>
+        <item>Purple Vent*</item>
+        <item>Green Vent*</item>
+        <item>Blue Lines</item>
+        <item>Dark Blue Lines</item>
+        <item>Red Lines</item>
+        <item>Gray Lines</item>
+        <item>White Lines</item>
+        <item>Cyan Lines</item>
+        <item>Space</item>
+        <item>Day Boat</item>
+        <item>Night Boat</item>
+        <item>Cyan Marshmallow*</item>
+        <item>Green Marshmallow*</item>
+        <item>Purple Marshmallow*</item>
+        <item>Yellow Marshmallow*</item>
+        <item>Orange Marshmallow*</item>
+        <item>Red Marshmallow*</item>
+        <item>Dark Blue Marshmallow*</item>
+        <item>Blue Marshmallow*</item>
+        <item>Green-Yellow Paint*</item>
+        <item>Blue Paint*</item>
+        <item>Green-White Paint*</item>
+        <item>Red-Purple Paint*</item>
+        <item>Yellow Paint*</item>
+        <item>Red-Yellow Paint*</item>
+        <item>Green Fingerprint*</item>
+        <item>Blue-Green Fingerprint*</item>
+        <item>Blue Fingerprint*</item>
+        <item>Purple Fingerprint*</item>
+        <item>Orange Fingerprint*</item>
+        <item>Red Fingerprint*</item>
+        <item>Gray Fingerprint*</item>
+        <item>Green Circle*</item>
+        <item>Orange Circle*</item>
+        <item>Blue Circle*</item>
+        <item>Blue-Green Circle*</item>
+        <item>Dark Orange Z*</item>
+        <item>Blue Z*</item>
+        <item>Yellow Z*</item>
+        <item>Orange Z*</item>
+        <item>Red Z*</item>
+        <item>White Z*</item>
+        <item>Stripes*</item>
+        <item>Blue Meteor*</item>
+        <item>Orange Meteor*</item>
+        <item>Red Meteor*</item>
+        <item>Yellow Meteor*</item>
+        <item>Orange Moustache*</item>
+        <item>Green Moustache*</item>
+        <item>Yellow Moustache*</item>
+        <item>Blue Moustache*</item>
+        <item>Red Moustache*</item>
+        <item>Cyan Moustache*</item>
+        <item>Coffee*</item>
+        <item>Green-Yellow Panels*</item>
+        <item>Red-Blue Panels*</item>
+        <item>Gray Panels*</item>
+        <item>Green-Orange Panels*</item>
+        <item>Red-Blue Panels*</item>
+        <item>Yellow-Pink Panels*</item>
+        <item>Dark Orange Sun*</item>
+        <item>Orange Sun*</item>
+        <item>Red Sun*</item>
+        <item>Pink Sun*</item>
+        <item>Yellow Sun*</item>
+        <item>Purple Sun*</item>
+        <item>Blue Sun*</item>
+        <item>Dark Purple Sun*</item>
+        <item>Submarine*</item>
+        <item>Pink Circles*</item>
+        <item>Blue Circles*</item>
+        <item>Purple Circles*</item>
+        <item>Orange Circles*</item>
+        <item>Purple Mountain*</item>
+        <item>Gray Mountain*</item>
+        <item>Orange Mountain*</item>
+        <item>Blue Mountain*</item>
+        <item>Purple Depth*</item>
+        <item>Pink Depth*</item>
+        <item>Blue Depth*</item>
+        <item>Green Depth*</item>
+        <item>Orange Depth*</item>
+        <item>Pink Stripes*</item>
+        <item>Blue Stripes*</item>
+        <item>Purple-Blue Stripes*</item>
+        <item>Purple-Yellow Stripes*</item>
+        <item>Pink-Purple Planets*</item>
+        <item>Red-Yellow Planets*</item>
+        <item>Green-Orange Planets*</item>
+        <item>Orange-Blue Planets*</item>
+        <item>Tangerine Shadows*</item>
+        <item>Blue Shadows*</item>
+        <item>Purple Shadows*</item>
+        <item>Red Shadows*</item>
+        <item>Yellow Shadows*</item>
+        <item>Orange Shadows*</item>
+        <item>Blue X*</item>
+        <item>Pink X*</item>
+        <item>Orange X*</item>
+        <item>Green X*</item>
+        <item>Purple X*</item>
+        <item>Material Blue*</item>
+        <item>Material Yellow*</item>
+        <item>Material Orange*</item>
+        <item>Material Purple*</item>
+        <item>Material Red*</item>
+        <item>Material Green*</item>
+        <item>Sun*</item>
+        <item>Planets*</item>
+        <item>Blue Cards*</item>
+        <item>Red Cards*</item>
+        <item>Green Cards*</item>
+        <item>Orange Cards*</item>
+        <item>Red Blow*</item>
+        <item>Blue Blow*</item>
+        <item>Purple Blow*</item>
+        <item>Orange Blow*</item>
+        <item>Gray Blow*</item>
+        <item>Blue Corners*</item>
+        <item>Green-Gray Corners*</item>
+        <item>Red Corners*</item>
+        <item>Green-Black Corners*</item>
+        <item>Purple Pyramid*</item>
+        <item>Indigo Pyramid*</item>
+        <item>Blue Pyramid*</item>
+        <item>Pink Pyramid*</item>
+        <item>Orange Pyramid*</item>
+    </string-array>
+
+    <string-array name="url_zan" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/winter.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/night_winter.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/blue_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/cyan_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/green_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/orange_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/purple_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/white_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/red_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/yellow_minimal.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/apple.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/dark_apple.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/blue_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/cyan_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/green_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/orange_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/purple_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/white_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/red_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/yellow_flip.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/london.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/blue_balloon.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/dark_blue_balloon.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/orange_balloon.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/dark_orange_balloon.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/blue_overlap.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/brown_overlap.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/dark_brown_overlap.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/green_overlap.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/light_blue_overlap.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/zan_cerne/orange_overlap.png</item>
+        <item>http://3.bp.blogspot.com/-Ua4j211k2rc/VeqgZV3nyYI/AAAAAAAAo-4/TZxpV07e9ws/s1600/flash2.png</item>
+        <item>http://1.bp.blogspot.com/-zt3i3UIKTMQ/VeqgaJRNFhI/AAAAAAAAo-8/DVRipjIcrxA/s1600/flash3.png</item>
+        <item>http://2.bp.blogspot.com/-B2u2quqIkEE/VeqgbGosleI/AAAAAAAAo_I/WJ0Deeg9XTU/s1600/flash4.png</item>
+        <item>http://2.bp.blogspot.com/-BVtoHT23-TQ/VeqgaGTJ65I/AAAAAAAAo_E/5V66APo9mwA/s1600/flash.png</item>
+        <item>http://4.bp.blogspot.com/-mBd5ZORVcGI/VeAEY6PtdQI/AAAAAAAAoeQ/aD6Bqs0OSKk/s1600/oop1.png</item>
+        <item>http://4.bp.blogspot.com/-B5gjm_iYx8A/VeAEZcoQhzI/AAAAAAAAoeU/CYJ1aeqU5sk/s1600/oop2.png</item>
+        <item>http://1.bp.blogspot.com/-X6v6Y-fNoBA/VeAEYq2DojI/AAAAAAAAoeM/3Es0OLAMllI/s1600/oop3.png</item>
+        <item>http://3.bp.blogspot.com/-uN46o_xsGr4/VeAEaHwQIZI/AAAAAAAAoek/YDnYO3IwmjA/s1600/oop4.png</item>
+        <item>http://2.bp.blogspot.com/-cqVhZ2cpjE8/VeAEaZK135I/AAAAAAAAoeo/1LbTu1_Jjms/s1600/oop5.png</item>
+        <item>http://3.bp.blogspot.com/-21mXsqOOfQg/VeAEavNVOgI/AAAAAAAAoew/iAILlE30EiQ/s1600/oop6.png</item>
+        <item>http://4.bp.blogspot.com/-Y5nVyu9vMiw/VdxayUeIgxI/AAAAAAAAoPs/A6yTYz2JsgM/s1600/space.png</item>
+        <item>http://3.bp.blogspot.com/-9X-ZHQkH96U/VdrPm7-OXrI/AAAAAAAAoMM/BDTOEkx9qfg/s1600/sea1.png</item>
+        <item>http://3.bp.blogspot.com/-f_6QfItJHBc/VdrPmVo7N3I/AAAAAAAAoMI/4UNZBiaMmyY/s1600/sea2.png</item>
+        <item>http://3.bp.blogspot.com/-o0MD2Ub8We8/VdiuF-b0zlI/AAAAAAAAoGw/KuwfoGwmyG4/s1600/marsh2.png</item>
+        <item>http://4.bp.blogspot.com/-TLXl_ewwpcc/VdiuFgOXiRI/AAAAAAAAoG0/cyJAdXuhOKE/s1600/marsh3.png</item>
+        <item>http://4.bp.blogspot.com/-ywgTRQ7JA5I/VdiuGgy_3XI/AAAAAAAAoG4/a4CTjoM19iE/s1600/marsh4.png</item>
+        <item>http://2.bp.blogspot.com/-qkbCMygBIiY/VdiuG9IQqtI/AAAAAAAAoG8/oMwjgyjvdTE/s1600/marsh5.png</item>
+        <item>http://2.bp.blogspot.com/-iWFqCWNLJnQ/VdiuHQpuZrI/AAAAAAAAoHA/6PxHVOuSJaI/s1600/marsh6.png</item>
+        <item>http://2.bp.blogspot.com/-YCioCw-qMCU/VdiuHscpLtI/AAAAAAAAoHY/741puns5tWA/s1600/marsh7.png</item>
+        <item>http://1.bp.blogspot.com/-bmRT5KGgAZ0/VdiuH3b7KzI/AAAAAAAAoHI/yPz2dQasO7M/s1600/marsh8.png</item>
+        <item>http://3.bp.blogspot.com/-i3q57EMNlAg/VdiuFsnHF8I/AAAAAAAAoGs/4NljDn8nJhk/s1600/marsh.png</item>
+        <item>http://4.bp.blogspot.com/-ZKTTBCOtmXU/VdbS62vJnWI/AAAAAAAAoBw/BxtENbKZ_Tk/s1600/col1.png</item>
+        <item>http://3.bp.blogspot.com/-8hW_VEWpcPk/VdbS7s6_NEI/AAAAAAAAoB4/lZgpP1D-hZI/s1600/col3.png</item>
+        <item>http://1.bp.blogspot.com/-1eHPD-x7ju8/VdbS7TzIGcI/AAAAAAAAoB0/Ha2V1AVNBfQ/s1600/col2.png</item>
+        <item>http://2.bp.blogspot.com/-ld20wqMku4Q/VdbS9CmmfcI/AAAAAAAAoCI/Fl4dQ6WM7fU/s1600/col4.png</item>
+        <item>http://1.bp.blogspot.com/-10zMrjNXNck/VdbS-pWSyfI/AAAAAAAAoCQ/IAsodRVLMxI/s1600/col5.png</item>
+        <item>http://2.bp.blogspot.com/-aUQl2ITquJY/VdbS_HV2ZhI/AAAAAAAAoCU/JThcBRljEuI/s1600/col6.png</item>
+        <item>http://4.bp.blogspot.com/-epeSP0MdGME/VdW9K9z3EOI/AAAAAAAAn-w/gHTgm0XM6x8/s1600/fing2.png</item>
+        <item>http://1.bp.blogspot.com/-PyeOUDIUzKw/VdW9EYfXAdI/AAAAAAAAn-o/6F3uTeLolzk/s1600/fing1.png</item>
+        <item>http://3.bp.blogspot.com/-BBxsx_bkmVk/VdW9B8bsPDI/AAAAAAAAn-g/w1mEoydUDBM/s1600/fing3.png</item>
+        <item>http://3.bp.blogspot.com/-gkxvOlCh8yA/VdW9UHgXiGI/AAAAAAAAn-4/YGE-UF5R2Ks/s1600/fing4.png</item>
+        <item>http://3.bp.blogspot.com/-BO9-nlzMvJo/VdW9ZCOdMPI/AAAAAAAAn_A/dm78MmsSYP8/s1600/fing6.png</item>
+        <item>http://2.bp.blogspot.com/-qEqLYktjMBQ/VdW9hALVC6I/AAAAAAAAn_I/Z0_ftxaIxM8/s1600/fing7.png</item>
+        <item>http://3.bp.blogspot.com/-S6kafqsdb3U/VdW9nWIx8vI/AAAAAAAAn_Q/VjDQiNcfUOo/s1600/fing8.png</item>
+        <item>http://2.bp.blogspot.com/-WbNAitDNcno/VdQ8p-SZ5gI/AAAAAAAAn34/MRddQxaSfNk/s1600/wall4.png</item>
+        <item>http://3.bp.blogspot.com/-VghpfDDIgQI/VdQ8oaQ2k-I/AAAAAAAAn3o/CL8LhgI5KUk/s1600/wall3.png</item>
+        <item>http://4.bp.blogspot.com/-E3cix-Bpi9g/VdQ8oa7rI4I/AAAAAAAAn3s/6sPfks9jzps/s1600/wall2.png</item>
+        <item>http://1.bp.blogspot.com/-3yFdtZCEvaQ/VdQ8oNZ1CCI/AAAAAAAAn3g/KIeus-BasZA/s1600/wall1.jpg</item>
+        <item>http://3.bp.blogspot.com/-QJ2Ydy5MggA/VdLlNzoQyCI/AAAAAAAAnxE/KYIeSWv6jnk/s1600/wal1.png</item>
+        <item>http://2.bp.blogspot.com/-qkxs5cODMA0/VdLlMjQq7hI/AAAAAAAAnw8/BDwoJELWBbY/s1600/wal2.png</item>
+        <item>http://3.bp.blogspot.com/-HunQWHWsBHs/VdLlPG7OBOI/AAAAAAAAnxI/ZFEQRb1kvlw/s1600/wal3.png</item>
+        <item>http://3.bp.blogspot.com/-GF0LUG07QRs/VdLlQ42sxjI/AAAAAAAAnxU/YC3r3e_ER0g/s1600/wal4.png</item>
+        <item>http://3.bp.blogspot.com/-wJT0mZTFXFE/VdLlSsXT3HI/AAAAAAAAnxc/9v3Su_ensAE/s1600/wal5.png</item>
+        <item>http://2.bp.blogspot.com/-4_QgZ2ZxzHI/VdLlTj3afKI/AAAAAAAAnxk/rE1h5bCKO1o/s1600/wal6.png</item>
+        <item>http://4.bp.blogspot.com/-Do6SACb2IFE/Vc8NaEndiiI/AAAAAAAAnhE/lSNeqai2k7A/s1600/strapes1%2528beta%2529.png</item>
+        <item>http://3.bp.blogspot.com/-vJ1w6_9TdcE/Vc5MXoiilYI/AAAAAAAAnds/thvFaQb4oEo/s1600/meteor.jpg</item>
+        <item>http://3.bp.blogspot.com/-GvGeLTBziZc/VdC3Iefzq8I/AAAAAAAAnpk/lsDOe6Bk1MQ/s1600/meteorcolor2.png</item>
+        <item>http://3.bp.blogspot.com/-K6732JGKFQo/VdC3IU4WKfI/AAAAAAAAnpg/h_rLkcqfAQg/s1600/meteorcolor3.png</item>
+        <item>http://4.bp.blogspot.com/-fTjPJ_NiEOw/VdC3JPyJQ0I/AAAAAAAAnpo/mgBzR9q3KLE/s1600/meteorcolor4.png</item>
+        <item>http://2.bp.blogspot.com/-ZnnbwZDZrbE/Vcyww8m2daI/AAAAAAAAnSA/fC06v-wMklU/s1600/mus1.jpg</item>
+        <item>http://4.bp.blogspot.com/-Nw6YnX5PTOY/VcywwOsG3kI/AAAAAAAAnR8/qIkzVohcuDI/s1600/mus2.jpg</item>
+        <item>http://1.bp.blogspot.com/-gorHyavkwGs/VcywxG8StZI/AAAAAAAAnSE/fMUWzSWuHD8/s1600/mus3.jpg</item>
+        <item>http://1.bp.blogspot.com/-X7I6FY36j4c/Vcywxii-SXI/AAAAAAAAnSI/a8ToHjxFdEc/s1600/mus4.jpg</item>
+        <item>http://2.bp.blogspot.com/-tK2rd5F7U0k/VcywyE-R8mI/AAAAAAAAnSY/I1bBt-hwVms/s1600/mus5.jpg</item>
+        <item>http://3.bp.blogspot.com/-2mEXUkitOcQ/VcywytCbtZI/AAAAAAAAnSc/fJsw87V-24U/s1600/mus6.jpg</item>
+        <item>http://4.bp.blogspot.com/-UEUUzn2zXnA/VctfeisQdNI/AAAAAAAAnHY/if5VNfSiems/s1600/coffee.jpg</item>
+        <item>http://1.bp.blogspot.com/-TEmGBtFlO38/VcpRM4NG1II/AAAAAAAAnBs/mld4RaiVLW0/s1600/yolo1.jpg</item>
+        <item>http://4.bp.blogspot.com/-0LRs-8CNRM8/VcpRPJnGc0I/AAAAAAAAnB8/Up8O7Miqizo/s1600/yolo2.jpg</item>
+        <item>http://2.bp.blogspot.com/-uzNdOVk5giE/VcpROVca9zI/AAAAAAAAnB0/sS4kskOcvtE/s1600/yolo3.jpg</item>
+        <item>http://3.bp.blogspot.com/-9PO_3r0g9Tk/VcpRP_CzH4I/AAAAAAAAnCA/2IBhqlxKPBM/s1600/yolo4.jpg</item>
+        <item>http://1.bp.blogspot.com/--I2t9XdS_i4/VcpRQ2ZddCI/AAAAAAAAnCM/MjO_51bXJBA/s1600/yolo5.jpg</item>
+        <item>http://1.bp.blogspot.com/-a96Xgpl1eVc/VcpRRnnal1I/AAAAAAAAnCU/lWcQRyQAM3Q/s1600/yolo6.jpg</item>
+        <item>http://4.bp.blogspot.com/-4qwQM16QD2Q/VcoHv6QM5qI/AAAAAAAAm7c/LmEXxjxlZPs/s1600/sunwal1.jpg</item>
+        <item>http://4.bp.blogspot.com/-ltZwZOikU2w/VcoHvTc1tKI/AAAAAAAAm7U/KsQ8ME001EI/s1600/sunwal2.jpg</item>
+        <item>http://1.bp.blogspot.com/-4WcXwDrCTjo/VcoHvhF_oyI/AAAAAAAAm7Y/bjwlWHwcThM/s1600/sunwal3.jpg</item>
+        <item>http://2.bp.blogspot.com/-V5E5kjiCNeQ/VcoHwjmI82I/AAAAAAAAm7o/Lb4ZLC1HFwA/s1600/sunwal4.jpg</item>
+        <item>http://4.bp.blogspot.com/-9ap3wz15JCY/VcoHxOWq7yI/AAAAAAAAm7w/OnFw9HPL2j8/s1600/sunwal5.jpg</item>
+        <item>http://2.bp.blogspot.com/-LypWs8T4PjM/VcoHxmJA_pI/AAAAAAAAm74/bzjlX9wei6Q/s1600/sunwal6.jpg</item>
+        <item>http://1.bp.blogspot.com/-BdZMLblD_Aw/VcoHyOIlFGI/AAAAAAAAm8E/FgdAaPBcpUM/s1600/sunwal7.jpg</item>
+        <item>http://1.bp.blogspot.com/-HQXWAEoydOs/VcoHyp5rGlI/AAAAAAAAm8I/XasnHyYQGwU/s1600/sunwal8.jpg</item>
+        <item>http://2.bp.blogspot.com/-Gcy5Cg7L_7I/VcIAvEMl-rI/AAAAAAAAmb0/jeF8XhEsrkw/s1600/submarine.jpg</item>
+        <item>http://3.bp.blogspot.com/-UUUIQJCKCHo/VcRWlMy4XAI/AAAAAAAAmhE/MEn0T5FWLzI/s1600/q1.jpg</item>
+        <item>http://3.bp.blogspot.com/-RFgtrzILnG4/VcRWlW57JrI/AAAAAAAAmhI/KV6fUd1o5no/s1600/q2.jpg</item>
+        <item>http://1.bp.blogspot.com/-dpq14PE1D80/VcRWmYbo78I/AAAAAAAAmhY/j3uaOKobJEY/s1600/q4.jpg</item>
+        <item>http://1.bp.blogspot.com/-m_y9_VbFLew/VcRWliyVTwI/AAAAAAAAmhU/gg3kY7LO2gI/s1600/q3.jpg</item>
+        <item>http://4.bp.blogspot.com/-SS5npGFfrh8/Vat2hRUEMxI/AAAAAAAAmLw/hhDxDrcd7j0/s1600/gora3.jpg</item>
+        <item>http://1.bp.blogspot.com/-ndpQkqh0g7o/Vat2hf-CAVI/AAAAAAAAmLs/FJjQ3haZsLo/s1600/gora1.jpg</item>
+        <item>http://4.bp.blogspot.com/-efOiAeTT88Q/Vat2h8OPtoI/AAAAAAAAmL8/5IC-uLez614/s1600/gora4.jpg</item>
+        <item>http://2.bp.blogspot.com/-EUtoYDuQeeo/Vat2gmL4moI/AAAAAAAAmLk/VuE9x1pSp7c/s1600/gora2.jpg</item>
+        <item>http://3.bp.blogspot.com/-Om3XpwZAyxE/Vao603i1YiI/AAAAAAAAmHY/bsAj2V9Akyg/s1600/op1.jpg</item>
+        <item>http://4.bp.blogspot.com/-OkPLNgeShCQ/Vao60VlyNXI/AAAAAAAAmHQ/DsiPedIADYY/s1600/op2.jpg</item>
+        <item>http://3.bp.blogspot.com/-h9PuU_shVIo/Vao60h8oMaI/AAAAAAAAmHU/_V_Hn5OjTrc/s1600/op3.jpg</item>
+        <item>http://4.bp.blogspot.com/-mng3CYr1Hv0/Vao61aMIbBI/AAAAAAAAmHk/pqhlH4zZB1E/s1600/op4.jpg</item>
+        <item>http://2.bp.blogspot.com/-oJnPNKqsQXc/Vao61xuf1jI/AAAAAAAAmHc/yWBuOVf22tI/s1600/op5.jpg</item>
+        <item>http://4.bp.blogspot.com/-1TIK4qZMJo0/Vaf1znp2tmI/AAAAAAAAl-E/7H4WY275_A4/s1600/walli1.jpg</item>
+        <item>http://4.bp.blogspot.com/-ilNk5Kphwv0/Vaf11RHiwbI/AAAAAAAAl-c/oKTjIDhZCnA/s1600/walli2.jpg</item>
+        <item>http://1.bp.blogspot.com/-jmlwcZatz-8/Vaf10NAYSYI/AAAAAAAAl-Q/ZYVaEFtWvGE/s1600/walli3.jpg</item>
+        <item>http://4.bp.blogspot.com/-DUrzc37asWk/Vaf13UOmyNI/AAAAAAAAl-k/AxZ3LvPEoss/s1600/walli4.jpg</item>
+        <item>http://4.bp.blogspot.com/-iURefEEm1AA/VaUT38grWpI/AAAAAAAAlm8/hVPR-EPUqSU/s1600/beta1.jpg</item>
+        <item>http://2.bp.blogspot.com/-A8LBQFo3OrQ/VaUT3L6RFGI/AAAAAAAAlm0/RxO0EaX82IE/s1600/beta2.jpg</item>
+        <item>http://1.bp.blogspot.com/-fLEUK4elzKg/VaUT4OUMRgI/AAAAAAAAlnA/0NzMvlvYQ5U/s1600/beta3.jpg</item>
+        <item>http://4.bp.blogspot.com/-D26a7SHsRd0/VaUT4hafO3I/AAAAAAAAlnI/Iz9H0ycEJJs/s1600/beta4.jpg</item>
+        <item>http://3.bp.blogspot.com/-qDJszW8MQoo/VaOlM5e03TI/AAAAAAAAlbY/YwfEuN0u42Y/s1600/wall1.jpg</item>
+        <item>http://4.bp.blogspot.com/-IkbeCA9Rt14/VaOlMytEGDI/AAAAAAAAlbU/aHtlEnnnKHw/s1600/wall2.jpg</item>
+        <item>http://2.bp.blogspot.com/-7BZr562uE_g/VaOlLpayizI/AAAAAAAAlbM/NX7cgQ_0z3U/s1600/wall3.jpg</item>
+        <item>http://1.bp.blogspot.com/-mhyWGvWv378/VaOlN6zgRRI/AAAAAAAAlbg/R4EodAxqMTY/s1600/wall4.jpg</item>
+        <item>http://4.bp.blogspot.com/-2_U3bSh-CPU/VaOlOnGNoXI/AAAAAAAAlbo/WA3a93BsMp8/s1600/wall5.jpg</item>
+        <item>http://2.bp.blogspot.com/-CMUfKJikco0/VaOlPbB1IJI/AAAAAAAAlb0/Vb47l816dkw/s1600/wall6.jpg</item>
+        <item>http://1.bp.blogspot.com/-bVZbiIem57U/VaJIkvdZfjI/AAAAAAAAlUc/5ybxHNQZd0s/s1600/wallpaper1.jpg</item>
+        <item>http://1.bp.blogspot.com/-H8ML-YhwFH8/VaJImC-wnFI/AAAAAAAAlUo/vrAo0T9iK5M/s1600/wallpaper2.jpg</item>
+        <item>http://2.bp.blogspot.com/-VJ2F59kzm_k/VaJImW5MofI/AAAAAAAAlUs/FoJBiBdIuv0/s1600/wallpaper3.jpg</item>
+        <item>http://4.bp.blogspot.com/-jT92ylcff0s/VaJInWXmIlI/AAAAAAAAlU4/Cg2en5EDiuE/s1600/wallpaper4.jpg</item>
+        <item>http://4.bp.blogspot.com/-O30iF6aHrKI/VaJIoG4CrrI/AAAAAAAAlU8/pb5s4t3VMrk/s1600/wallpaper5.jpg</item>
+        <item>http://1.bp.blogspot.com/-lkjyjpSesI0/VZ-i8OV9QPI/AAAAAAAAlGw/XAsr5mVVLSc/s1600/wall.jpg</item>
+        <item>http://2.bp.blogspot.com/-RbeekgTMFCs/VZ-i-vIzycI/AAAAAAAAlG4/RL4SwVxV9PM/s1600/wallpaper.jpg</item>
+        <item>http://1.bp.blogspot.com/-AnmILjpB1W8/VZ-i_NYSD4I/AAAAAAAAlG8/IkgKlYMsUAY/s1600/wallpaperss.jpg</item>
+        <item>http://1.bp.blogspot.com/-ou8ydydf1JM/VZ-jBGESBgI/AAAAAAAAlHI/ICYIRUpD_vY/s1600/wallssss.jpg</item>
+        <item>http://4.bp.blogspot.com/-BgnijnOHLM8/VZ-jEo-7zfI/AAAAAAAAlHQ/b83iReuXR6s/s1600/walsss.jpg</item>
+        <item>http://2.bp.blogspot.com/-Jdo28L074AU/VZ-jFx7BTjI/AAAAAAAAlHY/0KBxOPvC4Bs/s1600/walsssdsds.jpg</item>
+        <item>http://3.bp.blogspot.com/-w64eoIPV5RE/VYW5c9LW3LI/AAAAAAAAjXw/xBMp-OoS30A/s1600/Space2.jpg</item>
+        <item>http://3.bp.blogspot.com/-YCiZZMZMuW0/VYW5hzs46II/AAAAAAAAjYA/LdbwmVGllD0/s1600/hotplanets.jpg</item>
+        <item>http://2.bp.blogspot.com/-g3yz27lsggs/VVt5Jf2PsKI/AAAAAAAAeuE/RjMLRibhbFQ/s1600/popo1.jpg</item>
+        <item>http://1.bp.blogspot.com/-8pOYv9lLmVk/VVt5JTBHLGI/AAAAAAAAet8/gGiodxeDPuc/s1600/popo2.jpg</item>
+        <item>http://4.bp.blogspot.com/-7IeHjVEAiHA/VVt5K6a73kI/AAAAAAAAeuU/kr0GxMVKWkY/s1600/popo3.jpg</item>
+        <item>http://3.bp.blogspot.com/-JARUa2SoX24/VVt5Jj2UuFI/AAAAAAAAeuA/araIcFF27I0/s1600/popo.jpg</item>
+        <item>http://3.bp.blogspot.com/--kbmHLi8NjU/VVoxFXLsSgI/AAAAAAAAerA/25eyltZNlHQ/s1600/qwww.jpg</item>
+        <item>http://3.bp.blogspot.com/-2NTcqhYQHfo/VVoxFDWeH-I/AAAAAAAAeq8/UB5HbVJEtgI/s1600/qww.jpg</item>
+        <item>http://3.bp.blogspot.com/-Euk_KcryooE/VVoxFW6IGWI/AAAAAAAAerE/eZBRvv8x8t4/s1600/qwwww.jpg</item>
+        <item>http://1.bp.blogspot.com/-k7AlGlLmIZI/VVoxIbCfw9I/AAAAAAAAerU/wEGTqRdoUKo/s1600/qwwwwww.jpg</item>
+        <item>http://1.bp.blogspot.com/-OqcSzEwB3AI/VVoxIseJ7fI/AAAAAAAAerY/IDrr17guWbU/s1600/qwwwwwwwww.jpg</item>
+        <item>http://4.bp.blogspot.com/-s6YLbMgwSwI/VVogEboZJTI/AAAAAAAAepk/VfVVACDiBlU/s1600/newprojectaaa22.jpg</item>
+        <item>http://3.bp.blogspot.com/-k-94qn_7t4Y/VVogEPD4c5I/AAAAAAAAepo/1V2MCg_f-80/s1600/newprojectaaaa2.jpg</item>
+        <item>http://2.bp.blogspot.com/-Y1grUwWYB0Q/VVogHWOnM6I/AAAAAAAAeps/aojCxiwIqXU/s1600/newprojectaaaaaa.jpg</item>
+        <item>http://1.bp.blogspot.com/-F66Etz-2JBo/VVogD7QzxgI/AAAAAAAAepg/ZHCm1jgpcM8/s1600/newprojectaaaa22.jpg</item>
+        <item>http://2.bp.blogspot.com/-vsTTIg5ZUXQ/VVhzsyraEAI/AAAAAAAAemk/YDtwKGxscXc/s1600/wallpaper1.jpg</item>
+        <item>http://1.bp.blogspot.com/-jBDI8cRoei0/VVhzs_j8x-I/AAAAAAAAemg/2O4N6ZcrWrQ/s1600/wallpaper2.jpg</item>
+        <item>http://4.bp.blogspot.com/-LNhp1CJDfY4/VVhzvVSx8uI/AAAAAAAAem4/qu1W_flIrTI/s1600/wallpaper4.jpg</item>
+        <item>http://2.bp.blogspot.com/-wrqegRTw6MU/VVhzs3ZAJMI/AAAAAAAAemo/4UCrV-hD900/s1600/wallpaper.jpg</item>
+        <item>http://4.bp.blogspot.com/-Gsj_YWCoufU/VVhzv691Z2I/AAAAAAAAem8/towLBQn68Vk/s1600/wallpaper5.jpg</item>
+    </string-array>
+
+    <string-array name="name_greg" formatted="false">
+        <item>Blue Dots*</item>
+        <item>Flare*</item>
+        <item>Shards*</item>
+        <item>Ocean*</item>
+        <item>Brown Stripes*</item>
+        <item>Gray Stripes*</item>
+        <item>Mirrors*</item>
+        <item>Cubes*</item>
+        <item>Shapes*</item>
+    </string-array>
+
+    <string-array name="url_greg" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/network.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/collision.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/cataclysm.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/cascade.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/diffuse.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/refraction.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/shatter.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/flatcubes.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/greg_ives/shapes.png</item>
+    </string-array>
+
+    <string-array name="name_radek" formatted="false">
+        <item>Green Lines*</item>
+        <item>Red Lines*</item>
+        <item>Blue Lines*</item>
+        <item>Mountain*</item>
+        <item>Los Angeles*</item>
+        <item>Purple Cat*</item>
+        <item>Beach*</item>
+        <item>Blue Computer*</item>
+        <item>Red Computer*</item>
+    </string-array>
+
+    <string-array name="url_radek" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/green_lines.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/red_lines.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/blue_lines.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/mountain.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/los_angeles.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/purple_cat.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/beach.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/blue_computer.png</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/radekxmen_b/red_computer.png</item>
+    </string-array>
+
+    <string-array name="name_colin" formatted="false">
+        <item>Purple Circles 1*</item>
+        <item>Purple Circles 2*</item>
+        <item>Purple Circles 3*</item>
+        <item>Purple Circles 4*</item>
+        <item>Purple Circles 5*</item>
+        <item>Purple Circles 6*</item>
+        <item>Purple Circles 7*</item>
+        <item>Purple Circles 8*</item>
+        <item>Blue Circles 1*</item>
+        <item>Blue Circles 2*</item>
+        <item>Green Circles 1*</item>
+        <item>Green Circles 2*</item>
+        <item>Gray Circles*</item>
+        <item>Purple Fan*</item>
+        <item>Purple Fan 2*</item>
+        <item>Red Fan*</item>
+        <item>Blue Fan*</item>
+        <item>Cyan Fan*</item>
+        <item>Green Fan*</item>
+        <item>Orange Fan*</item>
+        <item>Brown Fan*</item>
+        <item>Gray Fan*</item>
+        <item>Forest Moon*</item>
+        <item>Forest Full Moon*</item>
+        <item>Forest Sunset*</item>
+        <item>Forest Sunset 2*</item>
+        <item>Forest Sky*</item>
+        <item>City Skyline*</item>
+        <item>Purple Paper*</item>
+        <item>Purple-Gray Paper*</item>
+        <item>Purple-White Paper 1*</item>
+        <item>Purple-White Paper 2*</item>
+        <item>Purple-White Paper 3*</item>
+        <item>Purple-Pink Paper*</item>
+        <item>Orange-Blue Paper*</item>
+        <item>Yellow-Green Paper*</item>
+        <item>Gray Paper 1*</item>
+        <item>Gray Paper 2*</item>
+        <item>Gray Paper 3*</item>
+        <item>Blue Paper*</item>
+        <item>Pink-Yellow Paper*</item>
+        <item>Pink-Orange Paper*</item>
+        <item>Pink Pyramid 1*</item>
+        <item>Pink Pyramid 2*</item>
+        <item>Orange Pyramid 1*</item>
+        <item>Orange Pyramid 2*</item>
+        <item>Orange Pyramid 3*</item>
+        <item>Orange Pyramid 4*</item>
+        <item>Green Pyramid 1*</item>
+        <item>Green Pyramid 2*</item>
+        <item>Green Pyramid 3*</item>
+        <item>Purple Pyramid*</item>
+        <item>Cyan Pyramid 1*</item>
+        <item>Cyan Pyramid 2*</item>
+        <item>Yellow Pyramid*</item>
+        <item>Purple Stripes 1*</item>
+        <item>Purple Stripes 2*</item>
+        <item>Purple-White Stripes 1*</item>
+        <item>Purple-White Stripes 2*</item>
+        <item>Blue-Yellow Stripes 1*</item>
+        <item>Blue-Yellow Stripes 2*</item>
+        <item>Blue-Yellow Stripes 3*</item>
+        <item>Purple-Yellow Stripes*</item>
+        <item>Purple-Orange Stripes*</item>
+        <item>Blue-Green Stripes*</item>
+        <item>Blue-White Stripes*</item>
+        <item>Blue-Red Stripes*</item>
+        <item>Green Drop*</item>
+        <item>Red-Blue Drop*</item>
+        <item>Gray-Blue Drop*</item>
+        <item>Yellow Drop*</item>
+        <item>Dark-Blue Drop*</item>
+        <item>Purple Drop*</item>
+        <item>Yellow-Purple Drop*</item>
+        <item>Red Horizon*</item>
+        <item>Yellow Horizon*</item>
+    </string-array>
+
+    <string-array name="url_colin" formatted="false">
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_4.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_5.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_6.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_7.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_circles_8.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue_circles_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_circles_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray_circles.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_fan_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/red_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/cyan_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/brown_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray_fan.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/forest_moon.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/forest_full_moon.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/forest_sunset.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/forest_sunset_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/forest_sky.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/city_skyline.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-white_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-white_paper_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-white_paper_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-pink_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange-blue_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/yellow-green_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray_paper_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray_paper_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/pink-yellow_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/pink-orange_paper.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/pink_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/pink_pyramid_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange_pyramid_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange_pyramid_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/orange_pyramid_4.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_pyramid_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_pyramid_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/cyan_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/cyan_pyramid_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/yellow_pyramid.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_stripes_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-white_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-white_stripes_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-yellow_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-yellow_stripes_2.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-yellow_stripes_3.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-yellow_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple-orange_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-green_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-white_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/blue-red_stripes.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/green_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/red-blue_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/gray-blue_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/yellow_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/dark-blue_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/purple_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/yellow-purple_drop.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/red_horizon.jpg</item>
+        <item>http://justinkruit.nl/stuff/jamesfenn/colin_simone/yellow_horizon.jpg</item>
+    </string-array>
+
+    <string-array name="wp_names">
+        <item>@array/name_james</item>
+        <item>@array/name_brice</item>
+        <item>@array/name_anas</item>
+        <item>@array/name_zan</item>
+        <item>@array/name_greg</item>
+        <item>@array/name_radek</item>
+        <item>@array/name_colin</item>
+    </string-array>
+
+    <string-array name="wp_urls">
+        <item>@array/url_james</item>
+        <item>@array/url_brice</item>
+        <item>@array/url_anas</item>
+        <item>@array/url_zan</item>
+        <item>@array/url_greg</item>
+        <item>@array/url_radek</item>
+        <item>@array/url_colin</item>
+    </string-array>
+
+    <string-array name="people_desc" formatted="false">
+        <item>A 15 year old developer - the maker of this app! No credit is required for any of his wallpapers.</item>
+        <item>A high school student who makes awesome free wallpapers that anyone can use as long as they give credit.</item>
+        <item>A google plus user who makes icons for his icon pack Colorcons in his spare time and is currently making an amazing new icon for this app! (not finished yet) He also donated a few wallpapers.</item>
+        <item>An enthusiastic material-design lover from Slovenia that gave all his wallpapers (there\'s a lot) to this app. He posts them (and more) to his blog on blogspot. He also made (most of) the images used in the tutorial.</item>
+        <item>A young designer and developer that likes to make wallpapers in his free time.</item>
+        <item>A designer that loves making minimal and material design wallpapers.</item>
+        <item>An android lover that proudly roots and flashes all his devices.</item>
+    </string-array>
+
+    <string-array name="people_urls" formatted="false">
+        <item>https://theandroidmaster.github.io</item>
+        <item>https://plus.google.com/+BriceSeibert23/posts</item>
+        <item>https://plus.google.com/101325935187431392674/posts</item>
+        <item>https://plus.google.com/+%C5%BDan%C4%8Cerne/posts</item>
+        <item>https://plus.google.com/+GregIvesgrives/posts</item>
+        <item>https://plus.google.com/+RadekxmenB/posts</item>
+        <item>https://plus.google.com/+ColinSimone/posts</item>
+    </string-array>
+
+    <array name="namey" formatted="false">
+        <item>MaterialTutorial - Alexandre Piveteau</item>
+        <item>MaterialDrawer - Mike Penz</item>
+        <item>Material Dialogs - Aidan Follestead</item>
+    </array>
+
+    <array name="desc" formatted="false">
+        <item>An Android library that provides a simple Material-Designed tutorial.</item>
+        <item>The MaterialDrawer library aims to provide the easiest possible implementation of a navigation drawer for your application.</item>
+        <item>Makes nice material design dialogs.</item>
+    </array>
+
+    <string-array name="uri" formatted="false">
+        <item>https://github.com/cadialex/MaterialTutorial</item>
+        <item>https://github.com/mikepenz/MaterialDrawer</item>
+        <item>https://github.com/afollestad/material-dialogs</item>
+    </string-array>
+
+    <color name="yellow">#00000000</color>
+    <color name="black">#000</color>
+
+    <string name="title_activity_fav">Favorites</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_first_time">FirstTime</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>

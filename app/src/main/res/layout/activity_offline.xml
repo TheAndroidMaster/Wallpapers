@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="@color/blue"
+        android:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Store Offline"
+            android:id="@+id/title"
+            android:gravity="start|center_vertical"
+            android:textColor="#fff"
+            android:layout_gravity="start|bottom"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:id="@+id/progress"
+        android:progressTint="@color/oranged"
+        android:progressBackgroundTint="#fafafa" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="128dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="64dp"
+            android:id="@+id/container">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Storing images offline can greatly increase the loading speed of the wallpapers in the app, but will cause the app to take up a lot of space on the phone."
+                android:id="@+id/textView10"
+                android:layout_margin="8dp"
+                android:textColor="#424242" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
