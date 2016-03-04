@@ -36,6 +36,7 @@ public class Cache {
             outStream = new FileOutputStream(file);
         } catch (FileNotFoundException e) {
             Toast.makeText(context, "error creating file", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         ((BitmapDrawable) image).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, outStream);
@@ -43,6 +44,7 @@ public class Cache {
             outStream.flush();
         } catch(IOException e) {
             Toast.makeText(context, "error flushing output stream", Toast.LENGTH_SHORT).show();
+            return;
         }
         try {
             outStream.close();
@@ -52,7 +54,6 @@ public class Cache {
     }
 
     public static boolean dir(String folder, Context context) {
-
         File storage = new File(Environment.getExternalStorageDirectory().getPath() + "/" + codename);
 
         File[] files = storage.listFiles();
@@ -134,12 +135,9 @@ public class Cache {
             String[] children = dir.list();
             for (String aChildren : children) {
                 boolean success = deleteDir(new File(dir, aChildren));
-                if (!success) {
-                    return false;
-                }
+                if (!success) return false;
             }
-        }
-
+        } else return false;
         return dir.delete();
     }
 }
