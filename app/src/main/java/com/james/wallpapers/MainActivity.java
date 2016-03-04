@@ -1,5 +1,6 @@
 package com.james.wallpapers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
@@ -9,6 +10,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.MenuItem;
@@ -16,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -74,17 +75,13 @@ public class MainActivity extends ActionBarActivity {
         int versionCode = BuildConfig.VERSION_CODE;
         int version = prefs.getInt("version", 0);
         if(!(version == versionCode)){
-            new MaterialDialog.Builder(this)
-                    .title("Changelog")
-                    .content(changelog)
-                    .positiveText("Ok")
-                    .callback(new MaterialDialog.ButtonCallback() {
-                        @Override
-                        public void onPositive(MaterialDialog dialog) {
-                            prefs.edit().putInt("version", BuildConfig.VERSION_CODE).apply();
-                        }
-                    })
-                    .show();
+            new AlertDialog.Builder(this).setTitle("Changelog").setMessage(changelog).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    prefs.edit().putInt("version", BuildConfig.VERSION_CODE).apply();
+                    dialog.dismiss();
+                }
+            }).create().show();
         }
 
         //inflates menu

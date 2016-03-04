@@ -183,15 +183,10 @@ public class About extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
-                PackageManager pm = getPackageManager();
-                ComponentName c1 = new ComponentName("com.james.wallpapers", "com.james.wallpapers.MainActOne");
-                ComponentName c2 = new ComponentName("com.james.wallpapers", "com.james.wallpapers.MainActTwo");
-                ComponentName c3 = new ComponentName("com.james.wallpapers", "com.james.wallpapers.MainActThree");
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 

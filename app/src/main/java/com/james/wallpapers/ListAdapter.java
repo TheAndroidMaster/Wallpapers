@@ -4,30 +4,31 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
-import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private String[] names, urls;
-    int array, arrays, loaded = -1;
+    int array, arrays, loaded = -1, orientation;
     String tabname;
     Context context;
     Activity activity;
     ArrayList<Drawable> imgs = new ArrayList<>();
-    boolean imageload, loading;
+    boolean loading;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View v;
@@ -41,7 +42,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
     }
 
-    public ListAdapter(int names, int urls, Activity activity, final String tabname) {
+    public static class ProgressViewHolder extends RecyclerView.ViewHolder {
+        public ProgressBar v;
+        public ProgressViewHolder(ProgressBar v) {
+            super(v);
+            this.v = v;
+        }
+    }
+
+    public ListAdapter(int names, int urls, Activity activity, final String tabname, int orientation) {
         this.activity = activity;
         context = activity.getApplicationContext();
         this.names = context.getResources().getStringArray(names);
@@ -50,60 +59,96 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         array = names;
         arrays = urls;
 
-        imageload = Cache.dir(tabname.toLowerCase().replace(" ", "_"), context);
+        this.orientation = orientation;
 
-        if (imageload) {
-            loading = true;
-            new Thread() {
-                public void run() {
-                    for (loaded += 1; loaded < ListAdapter.this.urls.length; loaded++) {
+        new Thread() {
+            public void run() {
+                for (loaded += 1; loaded < ListAdapter.this.urls.length; loaded++) {
+                    try {
                         imgs.add(loaded, Cache.getCompressedDrawable(tabname.toLowerCase().replace(" ", "_"), ListAdapter.this.urls[loaded].replace("/", "").replace(":", "").replace(".", ""), ListAdapter.this.urls[loaded], context));
-                    }
-                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loading = false;
+                        ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyItemInserted(loaded);
+                            }
+                        });
+                    } catch (IndexOutOfBoundsException e) {
+                        e.printStackTrace();
+                        try {
+                            sleep(100);
+                        } catch (InterruptedException ignored) {
                         }
-                    });
-                }
-            }.start();
-        } else {
-            loading = true;
-            new Thread() {
-                public void run() {
-                    for (loaded += 1; loaded < ListAdapter.this.urls.length; loaded++) {
-                        imgs.add(loaded, Cache.downloadCompressedDrawable(ListAdapter.this.urls[loaded], context));
                     }
-                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loading = false;
-                        }
-                    });
                 }
-            }.start();
+                ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading = false;
+                    }
+                });
+            }
+        }.start();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (loading && position == imgs.size() + 1) return 1;
+        else return 0;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == 1) return new ProgressViewHolder(new ProgressBar(parent.getContext()));
+        else {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item, parent, false);
+            return new ViewHolder(v, v.findViewById(R.id.image));
         }
     }
 
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item, parent, false);
-        return new ViewHolder(v, v.findViewById(R.id.image));
-    }
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == 1) {
+            ((ProgressViewHolder) holder).v.setIndeterminate(true);
+            new Thread() {
+                public void run() {
+                    while(loading) {
+                        try {
+                            sleep(100);
+                        } catch (InterruptedException ignored) {
+                        }
+                        if (!loading) break;
+                    }
+                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            notifyItemRemoved(holder.getAdapterPosition());
+                        }
+                    });
+                }
+            };
+            return;
+        }
 
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.v.setTag(position);
-        final SquareImageView image = (SquareImageView) holder.imagel;
-        final TextView title = (TextView) holder.v.findViewById(R.id.title);
+        ViewHolder viewHolder = (ViewHolder) holder;
+        if (viewHolder.thread != null && !viewHolder.thread.isInterrupted()) {
+            viewHolder.thread.interrupt();
+        }
 
-        holder.loaded = 0;
+        final SquareImageView image = (SquareImageView) viewHolder.imagel;
+        image.setOrientation(orientation);
+
+        TextView title = (TextView) viewHolder.v.findViewById(R.id.title);
+
+        viewHolder.loaded = 0;
 
         image.setImageBitmap(null);
 
         String titlestring = names[position];
-        holder.v.setOnClickListener(new View.OnClickListener() {
+        titlestring = titlestring.replace("*", "");
+        title.setText(titlestring);
+
+        viewHolder.v.findViewById(R.id.card).setTag(position);
+        viewHolder.v.findViewById(R.id.card).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, WallpaperView.class);
@@ -119,7 +164,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 }
                 intent.putExtra("up", "Flat");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && (imgs.size() > (int) v.getTag() || !loading)) {
+                if (imgs.size() > (int) v.getTag() || !loading) {
                     ActivityOptionsCompat options = ActivityOptionsCompat.makeThumbnailScaleUpAnimation(v, ((BitmapDrawable) imgs.get((int) v.getTag())).getBitmap(), 5, 5);
                     ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight());
                     context.startActivity(intent, options.toBundle());
@@ -128,46 +173,39 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 }
             }
         });
-        title.setBackgroundColor(context.getResources().getColor(R.color.orange));
-        titlestring = titlestring.replace("*", "");
-        title.setText(titlestring);
 
         if (!loading && loaded > position) {
             manage(position);
             image.setImageDrawable(imgs.get(position));
-            title.setBackgroundColor(getDominantColor(((BitmapDrawable) imgs.get(position)).getBitmap()));
-        } else {
-            holder.loaded = 1;
-            holder.thread = new Thread() {
+        } else if (!loading) {
+            viewHolder.loaded = 1;
+            viewHolder.thread = new Thread() {
                 public void run() {
-                    while(loaded <= position) {
-                        if (!loading) {
-                            ListAdapter.this.activity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    reload();
-                                }
-                            });
+                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            reload();
                         }
+                    });
+                    while(loaded <= holder.getAdapterPosition() || imgs.size() <= holder.getAdapterPosition()) {
                         try {
-                            this.sleep(2000);
-                        } catch (InterruptedException e) {
+                            sleep(2000);
+                        } catch (InterruptedException ignored) {
                         }
-                        if (holder.loaded == 0) return;
+                        if (((ViewHolder) holder).loaded == 0) return;
                     }
                     ListAdapter.this.activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(context.getResources().getColor(R.color.orange)), imgs.get(position)});
+                            TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(context.getResources().getColor(R.color.orange)), imgs.get(holder.getAdapterPosition())});
                             image.setImageDrawable(td);
-                            holder.loaded = 0;
+                            ((ViewHolder) holder).loaded = 0;
                             td.startTransition(200);
-                            title.setBackgroundColor(getDominantColor(((BitmapDrawable) imgs.get(position)).getBitmap()));
                         }
                     });
                 }
             };
-            holder.thread.start();
+            ((ViewHolder) holder).thread.start();
         }
     }
 
@@ -182,74 +220,38 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private void reload() {
         loading = true;
-        if (imageload) {
-            new Thread() {
-                public void run() {
-                    int load = loaded + 1;
-                    if (ListAdapter.this.urls.length <= 1) load = 0;
-                    for (loaded = load; loaded < ListAdapter.this.urls.length; loaded++) {
+        new Thread() {
+            public void run() {
+                int load = loaded + 1;
+                if (ListAdapter.this.urls.length <= 1) load = 0;
+                for (loaded = load; loaded < ListAdapter.this.urls.length; loaded++) {
+                    try {
                         imgs.add(loaded, Cache.getCompressedDrawable(ListAdapter.this.tabname.toLowerCase().replace(" ", "_"), ListAdapter.this.urls[loaded].replace("/", "").replace(":", "").replace(".", ""), ListAdapter.this.urls[loaded], context));
+                        ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyItemInserted(loaded);
+                            }
+                        });
+                    } catch (IndexOutOfBoundsException e) {
+                        e.printStackTrace();
+                        break;
                     }
-                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loading = false;
-                        }
-                    });
                 }
-            }.start();
-        } else {
-            new Thread() {
-                public void run() {
-                    int load = loaded + 1;
-                    if (ListAdapter.this.urls.length <= 1) load = 0;
-                    for (loaded = load; loaded < ListAdapter.this.urls.length; loaded++) {
-                        imgs.add(loaded-1, Cache.downloadCompressedDrawable(ListAdapter.this.urls[loaded-1], context));
+                ListAdapter.this.activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading = false;
                     }
-                    ListAdapter.this.activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loading = false;
-                        }
-                    });
-                }
-            }.start();
-        }
+                });
+            }
+        }.start();
     }
 
     @Override
     public int getItemCount() {
-        return names.length;
-    }
-
-    public static int getDominantColor(Bitmap bitmap) {
-        if (null == bitmap) return Color.TRANSPARENT;
-
-        int redBucket = 0;
-        int greenBucket = 0;
-        int blueBucket = 0;
-        int alphaBucket = 0;
-
-        boolean hasAlpha = bitmap.hasAlpha();
-        int pixelCount = bitmap.getWidth() * bitmap.getHeight();
-        int[] pixels = new int[pixelCount];
-        bitmap.getPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        for (int y = 0, h = bitmap.getHeight(); y < h; y++) {
-            for (int x = 0, w = bitmap.getWidth(); x < w; x++) {
-                int color = pixels[x + y * w]; // x + y * width
-                redBucket += (color >> 16) & 0xFF; // Color.red
-                greenBucket += (color >> 8) & 0xFF; // Color.green
-                blueBucket += (color & 0xFF); // Color.blue
-                if (hasAlpha) alphaBucket += (color >>> 24); // Color.alpha
-            }
-        }
-
-        return Color.argb(
-                (hasAlpha) ? (alphaBucket / pixelCount) : 255,
-                redBucket / pixelCount,
-                greenBucket / pixelCount,
-                blueBucket / pixelCount);
+        if (loading) return imgs.size() + 1;
+        else return imgs.size();
     }
 
     public void close() {

@@ -160,7 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:src="@mipmap/fav_add_white"
+        android:src="@drawable/fav_add"
         android:layout_margin="16dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

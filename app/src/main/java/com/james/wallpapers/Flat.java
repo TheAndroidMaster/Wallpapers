@@ -17,6 +17,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.Menu;
@@ -190,90 +191,33 @@ public class Flat extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Target header = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            color = getDominantColor(bitmap);
-            ImageView imageView = (ImageView) findViewById(R.id.header);
-            TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(color), new BitmapDrawable(bitmap)});
-            imageView.setImageDrawable(td);
-            td.startTransition(300);
-            CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-            collapsingToolbarLayout.setContentScrimColor(color);
-            tabLayout.setBackgroundColor(color);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(darkColor(color)) ;
-            };
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
-
     public void refresh(final int whichname, final int whichurl, final String tabname){
         final String[] url = getResources().getStringArray(whichurl);
-        if(Cache.dir(tabname.toLowerCase().replace(" ", "_"), this)) {
-            Picasso.with(Flat.this).cancelRequest(header);
-            new Thread() {
-                @Override
-                public void run() {
-                    drawable = Cache.getCompressedDrawable(tabname.toLowerCase().replace(" ", "_"), url[random(whichurl)].replace("/", "").replace(":", "").replace(".", ""), url[random(whichurl)], Flat.this);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ImageView imageView = (ImageView) findViewById(R.id.header);
-                            imageView.setImageDrawable(drawable);
-                            color = getDominantColor(((BitmapDrawable) drawable).getBitmap());
-                            CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-                            collapsingToolbarLayout.setContentScrimColor(color);
-                            tabLayout.setBackgroundColor(color);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                getWindow().setStatusBarColor(darkColor(color)) ;
-                            };
-                        }
-                    });
-                }
-            }.start();
-        } else {
-            Picasso.with(this).load(url[random(whichurl)]).resize(750, 750).centerCrop().into(header);
-        }
-    }
+        new Thread() {
+            @Override
+            public void run() {
+                drawable = Cache.getDrawable(tabname.toLowerCase().replace(" ", "_"), url[random(whichurl)].replace("/", "").replace(":", "").replace(".", ""), url[random(whichurl)], Flat.this);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ImageView imageView = (ImageView) findViewById(R.id.header);
+                        imageView.setImageDrawable(drawable);
 
-    public static int getDominantColor(Bitmap bitmap) {
-        if (null == bitmap) return Color.TRANSPARENT;
-
-        int redBucket = 0;
-        int greenBucket = 0;
-        int blueBucket = 0;
-        int alphaBucket = 0;
-
-        boolean hasAlpha = bitmap.hasAlpha();
-        int pixelCount = bitmap.getWidth() * bitmap.getHeight();
-        int[] pixels = new int[pixelCount];
-        bitmap.getPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        for (int y = 0, h = bitmap.getHeight(); y < h; y++) {
-            for (int x = 0, w = bitmap.getWidth(); x < w; x++) {
-                int color = pixels[x + y * w]; // x + y * width
-                redBucket += (color >> 16) & 0xFF; // Color.red
-                greenBucket += (color >> 8) & 0xFF; // Color.green
-                blueBucket += (color & 0xFF); // Color.blue
-                if (hasAlpha) alphaBucket += (color >>> 24); // Color.alpha
+                        Palette.from(((BitmapDrawable) drawable).getBitmap()).generate(new Palette.PaletteAsyncListener() {
+                            @Override
+                            public void onGenerated(Palette palette) {
+                                CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+                                collapsingToolbarLayout.setContentScrimColor(palette.getVibrantColor(Color.GRAY));
+                                tabLayout.setBackgroundColor(palette.getMutedColor(Color.DKGRAY));
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    getWindow().setStatusBarColor(darkColor(palette.getVibrantColor(Color.GRAY))) ;
+                                };
+                            }
+                        });
+                    }
+                });
             }
-        }
-
-        return Color.argb(
-                (hasAlpha) ? (alphaBucket / pixelCount) : 255,
-                redBucket / pixelCount,
-                greenBucket / pixelCount,
-                blueBucket / pixelCount);
+        }.start();
     }
 
     public int random(int urls){
@@ -289,7 +233,7 @@ public class Flat extends FragmentActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(darkColor(color));

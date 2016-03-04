@@ -2,17 +2,22 @@ package com.james.wallpapers;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.fivehundredpx.greedolayout.GreedoLayoutManager;
+import com.fivehundredpx.greedolayout.GreedoSpacingItemDecoration;
 
 public class ViewFragment extends Fragment {
     Bundle bundle;
     View frag;
     RecyclerView recyclerView;
-    boolean shown;
     ListAdapter list;
 
     @Override
@@ -24,11 +29,10 @@ public class ViewFragment extends Fragment {
     }
 
     public void refresh(int name, int url, String tabname){
+        list = new ListAdapter(name, url, getActivity(), tabname, SquareImageView.VERTICAL);
+
         recyclerView = (RecyclerView) frag.findViewById(R.id.my_recycler_view);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        list = new ListAdapter(name, url, getActivity(), tabname);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(list);
     }
 

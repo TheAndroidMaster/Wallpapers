@@ -67,11 +67,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         ((TextView)holder.subtitle).setText(fSubtitles.get(position));
 
         if (fSubtitles.get(position).matches("Designer")) {
-            ((CardView)holder.card).setCardBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.card.setBackgroundColor(context.getResources().getColor(R.color.orange)) ;
             ((TextView)holder.title).setTextColor(Color.parseColor("#fafafa"));
             ((TextView)holder.subtitle).setTextColor(Color.parseColor("#e0e0e0"));
         } else {
-            ((CardView)holder.card).setCardBackgroundColor(Color.parseColor("#ffffff"));
             ((TextView)holder.title).setTextColor(Color.parseColor("#212121"));
             ((TextView)holder.subtitle).setTextColor(Color.parseColor("#616161"));
         }

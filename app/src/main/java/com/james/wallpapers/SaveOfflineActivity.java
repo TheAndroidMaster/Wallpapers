@@ -54,7 +54,7 @@ public class SaveOfflineActivity extends AppCompatActivity {
         for(int i = 0; i < pplnames.length; i++){
             AppCompatCheckBox switchCompat = new AppCompatCheckBox(this);
             switchCompat.setText(pplnames[i]);
-            switchCompat.setId(i);
+            switchCompat.setTag(i);
             urls.add(getResources().getStringArray(tab_urls.getResourceId(i, -1)));
             switchCompat.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,10 +63,13 @@ public class SaveOfflineActivity extends AppCompatActivity {
                     if (box.isChecked() && !running) {
                         running = true;
                         progress.setIndeterminate(true);
-                        download(urls.get(v.getId()), pplnames[v.getId()]);
+                        download(urls.get((int) v.getTag()), pplnames[(int) v.getTag()]);
                     } else {
                         if(running && !box.isChecked()) running = false;
-                        if (!box.isChecked()) delete(pplnames[v.getId()]);
+                        if (!box.isChecked()) {
+                            Cache.delete(pplnames[(int) v.getTag()].toLowerCase().replace(" ", "_"), SaveOfflineActivity.this);
+                            if (!running) Snackbar.make(findViewById(R.id.root), "Deleted", Snackbar.LENGTH_SHORT).show();
+                        }
                         else if (running) box.setChecked(false);
                     }
                 }
@@ -158,8 +161,9 @@ public class SaveOfflineActivity extends AppCompatActivity {
     public void download(final String[] downloads, final String folder) {
         new Thread() {
             public void run() {
-                for (int i = 0; i < downloads.length; i++) {
-                    if(running) getBitmapFromURL(downloads[i], folder.toLowerCase().replace(" ", "_"));
+                for (String download : downloads) {
+                    if (running)
+                        Cache.saveDrawable(folder, download.replace("/", "").replace(":", "").replace(".", ""), Cache.getDrawable(folder, "", download, SaveOfflineActivity.this), getApplicationContext());
                 }
                 runOnUiThread(new Runnable() {
                     @Override
@@ -174,26 +178,5 @@ public class SaveOfflineActivity extends AppCompatActivity {
             }
         }.start();
 
-    }
-
-    public void delete(String folder) {
-        Cache.delete(folder.toLowerCase().replace(" ", "_"), this);
-        if (!running) Snackbar.make(findViewById(R.id.root), "Deleted", Snackbar.LENGTH_SHORT).show();
-    }
-
-    public void getBitmapFromURL(final String src, final String folder) {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
-        try {
-            java.net.URL url = new java.net.URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bmp = BitmapFactory.decodeStream(input);
-            connection.disconnect();
-            Cache.saveDrawable(folder, src.replace("/", "").replace(":", "").replace(".", ""), new BitmapDrawable(getResources(), bmp), getApplicationContext());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

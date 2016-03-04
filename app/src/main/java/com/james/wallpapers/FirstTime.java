@@ -81,7 +81,7 @@ public class FirstTime extends TutorialActivity  {
                         .setImageResource(R.mipmap.timer_fg)
                         .setImageResourceBackground(R.mipmap.timer_bg)
                         .setCustomAction(new CustomAction.Builder(Uri.parse("https://play.google.com/store/apps/details?id=net.nurik.roman.muzei"))
-                                .setIcon(R.mipmap.download_play)
+                                .setIcon(R.drawable.download_play)
                                 .build())
                         .build();
             case 5:
@@ -89,7 +89,7 @@ public class FirstTime extends TutorialActivity  {
                         .setTitle("Community")
                         .setDescription("Join the google plus community for news about upcoming updates, more wallpapers, and pictures of cute cats.")
                         .setCustomAction(new CustomAction.Builder(Uri.parse("https://plus.google.com/communities/104074488451953797559"))
-                                .setIcon(R.mipmap.ic_social_people)
+                                .setIcon(R.drawable.social)
                                 .build())
                         .setImageResourceBackground(R.mipmap.googleplus)
                         .build();
@@ -98,7 +98,7 @@ public class FirstTime extends TutorialActivity  {
                         .setTitle("Ratings and Reviews")
                         .setDescription("Reviews are always appreciated. Please provide some feedback about your experience with this app.")
                         .setCustomAction(new CustomAction.Builder(Uri.parse("https://play.google.com/store/apps/details?id=com.james.wallpapers"))
-                                .setIcon(R.mipmap.ic_play_store)
+                                .setIcon(R.drawable.download_play)
                                 .build())
                         .setImageResource(R.mipmap.rate_fg)
                         .setImageResourceBackground(R.mipmap.rate_bg)

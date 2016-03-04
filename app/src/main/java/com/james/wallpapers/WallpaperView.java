@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -25,8 +26,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,10 +40,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -114,7 +112,7 @@ public class WallpaperView extends ActionBarActivity {
         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.orange)));
         fav = prefs.getBoolean(path, false);
         if(fav){
-            fab.setImageResource(R.mipmap.fav_added);
+            fab.setImageResource(R.drawable.fav_added);
         }
 
         new Thread() {
@@ -134,16 +132,16 @@ public class WallpaperView extends ActionBarActivity {
                         int color = getDominantColor(bmp.getBitmap());
 
                         toolbar.setBackgroundColor(color);
-                        findViewById(R.id.fab).setBackgroundTintList(ColorStateList.valueOf(color));
+                        ((FloatingActionButton) findViewById(R.id.fab)).setBackgroundTintList(ColorStateList.valueOf(color));
                         bg.setBackgroundColor(color);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             getWindow().setStatusBarColor(darkColor(color));
                         };
 
                         if(fav){
-                            fab.setImageResource(R.mipmap.fav_added_white);
+                            fab.setImageResource(R.drawable.fav_added);
                         }else{
-                            fab.setImageResource(R.mipmap.fav_add_white);
+                            fab.setImageResource(R.drawable.fav_add);
                         }
                     }
                 });
@@ -154,11 +152,11 @@ public class WallpaperView extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (fav) {
-                    fab.setImageResource(R.mipmap.fav_add_white);
+                    fab.setImageResource(R.drawable.fav_add);
                     prefs.edit().putBoolean(path, false).apply();
                     fav = false;
                 } else {
-                    fab.setImageResource(R.mipmap.fav_added_white);
+                    fab.setImageResource(R.drawable.fav_added);
                     prefs.edit().putBoolean(path, true).apply();
                     fav = true;
                 }
@@ -179,7 +177,7 @@ public class WallpaperView extends ActionBarActivity {
         GridLayoutManager grid = new GridLayoutManager(this, 1);
         grid.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(grid);
-        recyclerView.setAdapter(new ListAdapter(tab_names.getResourceId(authnum, -1), tab_urls.getResourceId(authnum, -1), WallpaperView.this, author));
+        recyclerView.setAdapter(new ListAdapter(tab_names.getResourceId(authnum, -1), tab_urls.getResourceId(authnum, -1), WallpaperView.this, author, SquareImageView.HORIZONTAL));
         recyclerView.setHasFixedSize(true);
 
         tab_names.recycle();
@@ -198,70 +196,16 @@ public class WallpaperView extends ActionBarActivity {
         complete = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                new MaterialDialog.Builder(WallpaperView.this)
-                        .title("Download Complete")
-                        .content("Your wallpaper has been downloaded.")
-                        .positiveText("Downloads")
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
-                            }
-                        })
-                        .show();
+                new AlertDialog.Builder(context).setTitle("Download Complete").setMessage("Your wallpaper has been downloaded.").setPositiveButton("Downloads", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
+                    }
+                }).create().show();
             }
         };
 
     }
-
-    Target imageLoad = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            int color = getDominantColor(bitmap);
-            ImageView imageee = (ImageView) findViewById(R.id.imageee);
-            imageee.setImageBitmap(bitmap);
-            findViewById(R.id.progressBar).setVisibility(View.GONE);
-            android.support.design.widget.FloatingActionButton fab = (android.support.design.widget.FloatingActionButton) findViewById(R.id.fab);
-            fab.setBackgroundTintList(ColorStateList.valueOf(getDominantColor(bitmap)));
-            if(isColorDark(color)){
-                if(fav){
-                    fab.setImageResource(R.mipmap.fav_added_white);
-                }else{
-                    fab.setImageResource(R.mipmap.fav_add_white);
-                }
-            } else {
-                if(fav) {
-                    fab.setImageResource(R.mipmap.fav_added);
-                } else {
-                    fab.setImageResource(R.mipmap.fav_add);
-                }
-            }
-            toolbar.setBackgroundColor(color);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(darkColor(color));
-            };
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-            new MaterialDialog.Builder(WallpaperView.this)
-                    .title("No Connection")
-                    .content("Internet access is needed to view wallpapers.")
-                    .positiveText("Wifi Settings")
-                    .callback(new MaterialDialog.ButtonCallback() {
-                        @Override
-                        public void onPositive(MaterialDialog dialog) {
-                            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                        }
-                    })
-                    .show();
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -282,23 +226,18 @@ public class WallpaperView extends ActionBarActivity {
 
 
             if(title.contains("*")){
-                new MaterialDialog.Builder(this)
-                        .title("Credit Required")
-                        .content("Credit is required for this wallpaper. Make sure you check the about section for who made this wallpaper so you can give them credit.")
-                        .positiveText("Start Download")
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                DownloadManager.Request r = new DownloadManager.Request(Uri.parse(path));
-                                r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, String.valueOf(getTitle() + ".png"));
-                                r.allowScanningByMediaScanner();
-                                r.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                                dm.enqueue(r);
-                                download();
-                            }
-                        })
-                        .show();
+                new AlertDialog.Builder(this).setTitle("Credit Required").setMessage("Credit is required for this wallpaper. Make sure you check the about section for who made this wallpaper so you can give them credit.").setPositiveButton("Start Download", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DownloadManager.Request r = new DownloadManager.Request(Uri.parse(path));
+                        r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, String.valueOf(getTitle() + ".png"));
+                        r.allowScanningByMediaScanner();
+                        r.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                        dm.enqueue(r);
+                        download();
+                    }
+                }).create().show();
             }else{
                 DownloadManager.Request r = new DownloadManager.Request(Uri.parse(path));
                 r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, title + ".png");

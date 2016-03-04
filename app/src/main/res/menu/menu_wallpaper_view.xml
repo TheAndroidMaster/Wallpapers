@@ -4,7 +4,7 @@
     tools:context="com.james.wallpapers.WallpaperView">
     <item android:id="@+id/action_settings" android:title="Download"
         android:orderInCategory="100" app:showAsAction="always"
-        android:icon="@mipmap/download"/>
+        android:icon="@drawable/download"/>
     <item android:id="@+id/action_set" android:title="Set Wallpaper"
         android:orderInCategory="100" app:showAsAction="always"
         android:icon="@mipmap/wallpaper"/>

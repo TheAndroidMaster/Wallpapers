@@ -9,13 +9,13 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 
 public class Cache {
 
@@ -96,46 +96,24 @@ public class Cache {
         }
     }
 
-    public static Drawable downloadDrawable (String src, Context context) {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
+    public static Drawable downloadDrawable(String src, Context context) {
         try {
-            java.net.URL url = new java.net.URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bmp = BitmapFactory.decodeStream(input);
-            connection.disconnect();
-            if (bmp.getHeight() * bmp.getWidth() > 4500000) {
-                bmp = Bitmap.createScaledBitmap(bmp, bmp.getWidth()/2, bmp.getHeight()/2, true);
-            }
-            return new BitmapDrawable(context.getResources(), bmp);
+            return new BitmapDrawable(context.getResources(), Glide.with(context).load(src).asBitmap().into(-1, -1).get());
         } catch (Exception e) {
             e.printStackTrace();
-            return context.getResources().getDrawable(R.mipmap.wifioff);
+            return context.getResources().getDrawable(R.drawable.wifioff);
         }
     }
 
     public static Drawable downloadCompressedDrawable(String src, Context context) {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
         try {
-            java.net.URL url = new java.net.URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = 4;
-
-            Bitmap bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input, null, o2), o2.outWidth / 2, o2.outHeight / 2, true);
-
-            connection.disconnect();
-            //bmp = Bitmap.createScaledBitmap(bmp, bmp.getWidth() / 6, bmp.getHeight() / 6, false);
-            return new BitmapDrawable(context.getResources(), bmp);
+            Bitmap b = Glide.with(context).load(src).asBitmap().into(-1, -1).get();
+            int width, height = 350;
+            width = (height * b.getWidth()) / b.getHeight();
+            return new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(b, width, height, true));
         } catch (Exception e) {
             e.printStackTrace();
-            return context.getResources().getDrawable(R.mipmap.wifioff);
+            return context.getResources().getDrawable(R.drawable.wifioff);
         }
     }
 
