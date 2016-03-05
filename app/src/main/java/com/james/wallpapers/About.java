@@ -29,6 +29,7 @@ public class About extends ActionBarActivity {
     int iconcount;
 
     ViewPager vp;
+    IconPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class About extends ActionBarActivity {
         iconcount = prefs.getInt("iconcount", 0);
 
         vp = (ViewPager) findViewById(R.id.view_pager);
-        vp.setAdapter(new IconPagerAdapter(this, getSupportFragmentManager()));
+        adapter = new IconPagerAdapter(getSupportFragmentManager());
+        vp.setAdapter(adapter);
         vp.setCurrentItem(iconcount);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -179,6 +181,8 @@ public class About extends ActionBarActivity {
                 }
                 iconcount = position;
                 prefs.edit().putInt("iconcount", iconcount).apply();
+
+                adapter.onScroll(position);
             }
 
             @Override

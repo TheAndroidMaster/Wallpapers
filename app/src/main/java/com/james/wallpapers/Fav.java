@@ -1,6 +1,5 @@
 package com.james.wallpapers;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
@@ -11,38 +10,26 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.mikepenz.iconics.typeface.FontAwesome;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
-import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fav extends ActionBarActivity {
+public class Fav extends AppCompatActivity {
 
     int counter, key;
     boolean isOdd, isFav;
     String[] ppl;
-    private AccountHeader headerResult = null;
     List<Integer> names, urls, nums;
     List<String> auths;
-    PendingIntent recurring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,62 +74,7 @@ public class Fav extends ActionBarActivity {
         tab_names.recycle();
         tab_urls.recycle();
 
-        headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withCompactStyle(false)
-                .withHeaderBackground(R.mipmap.wpicon)
-                .withProfileImagesClickable(false)
-                .withSelectionListEnabledForSingleProfile(false)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Fornax").withEmail("Version " + BuildConfig.VERSION_NAME).withIcon(getResources().getDrawable(R.mipmap.wpicon))
-                )
-                .withSavedInstance(savedInstanceState)
-                .build();
-
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withTranslucentStatusBar(true)
-                .withStatusBarColorRes(R.color.blued)
-                .withActionBarDrawerToggle(true)
-                .withAccountHeader(headerResult)
-                .withToolbar(toolbar)
-                .withSelectedItem(2)
-                .addDrawerItems(
-                        //pass your items here
-                        new SecondaryDrawerItem().withName("Home").withIdentifier(1).withIcon(FontAwesome.Icon.faw_home),
-                        new SecondaryDrawerItem().withName("Wallpapers").withIdentifier(2).withIcon(FontAwesome.Icon.faw_picture_o),
-                        new SecondaryDrawerItem().withName("Favorites").withIdentifier(4).withIcon(FontAwesome.Icon.faw_heart),
-                        new SecondaryDrawerItem().withName("Offline").withIdentifier(5).withIcon(FontAwesome.Icon.faw_download),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("About").withIdentifier(3).withCheckable(false).withIcon(FontAwesome.Icon.faw_info_circle)
-
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        Intent intent = null;
-                        if (drawerItem.getIdentifier() == 1) {
-                            intent = new Intent(Fav.this, MainActivity.class);
-                        } else if (drawerItem.getIdentifier() == 2) {
-                            intent = new Intent(Fav.this, Flat.class);
-                        } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(Fav.this, About.class);
-                        } else if (drawerItem.getIdentifier() == 5) {
-                            intent = new Intent(Fav.this, SaveOfflineActivity.class);
-                        } else if (drawerItem.getIdentifier() == 4) {
-                            intent = new Intent(Fav.this, Fav.class);
-                        }
-                        if (intent != null) {
-                            Fav.this.startActivity(intent);
-                        }
-                        return false;
-                    }
-                })
-
-
-                .build();
-
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        new Drawer(this).initDrawer(toolbar);
     }
 
     @Override
@@ -194,14 +126,14 @@ public class Fav extends ActionBarActivity {
 
                 View v = getLayoutInflater().inflate(R.layout.layout_item, null, false);
 
-                final CardView cardView = (CardView) v.findViewById(R.id.card);
+                final FrameLayout cardView = (FrameLayout) v.findViewById(R.id.card);
                 cardView.setId(key);
 
                 String mName = name[count];
                 mName = mName.replace("*", "");
 
                 final TextView title = (TextView) v.findViewById(R.id.title);
-                title.setBackgroundColor(getResources().getColor(R.color.orange));
+                title.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 title.setText(mName);
 
                 final SquareImageView image = (SquareImageView) v.findViewById(R.id.image);
@@ -218,7 +150,7 @@ public class Fav extends ActionBarActivity {
                                 int color = getDominantColor(bmp);
                                 title.setBackgroundColor(color);
                                 image.setBackgroundColor(color);
-                                TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(getResources().getColor(R.color.oranged)), new BitmapDrawable(bmp)});
+                                TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(getResources().getColor(R.color.colorAccent)), new BitmapDrawable(bmp)});
                                 image.setImageDrawable(td);
                                 td.startTransition(200);
                             }

@@ -13,11 +13,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private String[] names, urls;
@@ -83,12 +81,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 intent.putExtra("auth", tabname);
                 intent.putExtra("up", "Flat");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 if (image.getDrawable() != null) {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ((BitmapDrawable) image.getDrawable()).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    Drawable prev = image.getDrawable();
+                    if (prev instanceof TransitionDrawable) prev = ((TransitionDrawable) image.getDrawable()).getDrawable(1);
+                    try {
+                        ((BitmapDrawable) prev).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                        context.startActivity(intent);
+                        return;
+                    }
                     byte[] b = baos.toByteArray();
                     intent.putExtra("preload", b);
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeThumbnailScaleUpAnimation(v, ((BitmapDrawable) image.getDrawable()).getBitmap(), 5, 5);
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeThumbnailScaleUpAnimation(v, ((BitmapDrawable) prev).getBitmap(), 5, 5);
                     ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight());
                     context.startActivity(intent, options.toBundle());
                 } else {
@@ -103,7 +111,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 ListAdapter.this.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(context.getResources().getColor(R.color.orange)), d});
+                        TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(context.getResources().getColor(R.color.colorAccent)), d});
                         image.setImageDrawable(td);
                         viewHolder.loaded = 0;
                         td.startTransition(200);

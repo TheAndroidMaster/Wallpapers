@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/orange</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppThemeLight" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
@@ -12,7 +12,7 @@
         <item name="android:actionBarStyle">@style/MyStyledActionBar</item>
     </style>
     <style name="MyStyledActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="background">@color/blue</item>
+        <item name="background">@color/colorPrimary</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
     </style>
 

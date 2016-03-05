@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root">
 
-    <android.support.v7.widget.Toolbar
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:background="@color/blue"
-        android:id="@+id/toolbar"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="?attr/actionBarSize"
+        android:fitsSystemWindows="true">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="bottom|right"
+            android:foregroundTintMode="add"
+            android:clipToPadding="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed" >
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Store Offline"
-            android:id="@+id/title"
-            android:gravity="start|center_vertical"
-            android:textColor="#fff"
-            android:layout_gravity="start|bottom"
-            android:layout_weight="1"
-            android:textSize="20sp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:id="@+id/toolbar"
+                app:layout_collapseMode="pin"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Store Offline"
+                    android:id="@+id/title"
+                    android:gravity="start|center_vertical"
+                    android:textColor="#fff"
+                    android:layout_gravity="start|bottom"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:id="@+id/progress"
-        android:progressTint="@color/oranged"
-        android:progressBackgroundTint="#fafafa" />
+            </android.support.v7.widget.Toolbar>
 
-    <ScrollView
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress"
+                android:progressTint="@color/colorAccent"
+                android:progressBackgroundTint="#fafafa"
+                android:layout_gravity="bottom" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="128dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:orientation="vertical"
@@ -62,6 +80,6 @@
                 android:textColor="#424242" />
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

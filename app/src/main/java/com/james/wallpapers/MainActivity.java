@@ -16,22 +16,9 @@ import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-
-import com.mikepenz.iconics.typeface.FontAwesome;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
-import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    private AccountHeader headerResult = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,64 +105,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-
-        headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withCompactStyle(false)
-                .withHeaderBackground(R.mipmap.wpicon)
-                .withProfileImagesClickable(false)
-                .withSelectionListEnabledForSingleProfile(false)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Fornax").withEmail("Version " + BuildConfig.VERSION_NAME).withIcon(getResources().getDrawable(R.mipmap.wpicon))
-                )
-                .withSavedInstance(savedInstanceState)
-                .build();
-        int selected = 0;
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withTranslucentStatusBar(true)
-                .withStatusBarColorRes(R.color.blued)
-                .withActionBarDrawerToggle(true)
-                .withAccountHeader(headerResult)
-                .withToolbar(toolbar)
-                .withSelectedItem(selected)
-                .addDrawerItems(
-                        //pass your items here
-                        new SecondaryDrawerItem().withName("Home").withIdentifier(1).withIcon(FontAwesome.Icon.faw_home),
-                        new SecondaryDrawerItem().withName("Wallpapers").withIdentifier(2).withIcon(FontAwesome.Icon.faw_picture_o),
-                        new SecondaryDrawerItem().withName("Favorites").withIdentifier(4).withIcon(FontAwesome.Icon.faw_heart),
-                        new SecondaryDrawerItem().withName("Offline").withIdentifier(5).withIcon(FontAwesome.Icon.faw_download),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("About").withIdentifier(3).withCheckable(false).withIcon(FontAwesome.Icon.faw_info_circle)
-
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        Intent intent = null;
-                        if (drawerItem.getIdentifier() == 1) {
-                            intent = new Intent(MainActivity.this, MainActivity.class);
-                        } else if (drawerItem.getIdentifier() == 2) {
-                            intent = new Intent(MainActivity.this, Flat.class);
-                        } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(MainActivity.this, About.class);
-                        } else if (drawerItem.getIdentifier() == 5) {
-                            intent = new Intent(MainActivity.this, SaveOfflineActivity.class);
-                        } else if (drawerItem.getIdentifier() == 4) {
-                            intent = new Intent(MainActivity.this, Fav.class);
-                        }
-                        if (intent != null) {
-                            MainActivity.this.startActivity(intent);
-                        }
-                        return false;
-                    }
-                })
-
-
-                .build();
-
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
-
+        new Drawer(this).initDrawer(toolbar);
     }
 
     @Override

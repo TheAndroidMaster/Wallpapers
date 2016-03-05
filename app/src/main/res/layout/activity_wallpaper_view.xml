@@ -39,7 +39,7 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:background="@color/blue"
+                android:background="@color/colorPrimary"
                 android:elevation="4dp">
             </android.support.v7.widget.Toolbar>
 
@@ -63,7 +63,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:background="@color/blue"
+                android:background="@color/colorPrimary"
                 android:id="@+id/back">
 
                 <TextView
@@ -71,14 +71,14 @@
                     android:layout_height="wrap_content"
                     android:text="Wallpaper"
                     android:id="@+id/wall"
-                    android:textColor="#fafafa" />
+                    android:textColor="@color/textColorPrimary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Creator"
                     android:id="@+id/auth"
-                    android:textColor="#fafafa" />
+                    android:textColor="@color/textColorSecondary" />
             </LinearLayout>
 
             <LinearLayout
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="More by this Designer"
                     android:layout_margin="8dp"
-                    android:textColor="#424242"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="20sp"
                     android:layout_weight="1" />
 
@@ -103,7 +103,7 @@
                     android:id="@+id/expand"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground"
-                    android:textColor="@color/orange" />
+                    android:textColor="@color/colorAccent" />
 
             </LinearLayout>
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:text="More like this"
                     android:layout_margin="8dp"
-                    android:textColor="#424242"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="20sp"
                     android:layout_weight="1" />
 
@@ -135,7 +135,7 @@
                     android:id="@+id/textView12"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground"
-                    android:textColor="@color/orange" />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
@@ -153,7 +153,7 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
-        android:indeterminateTint="@color/orange"/>
+        android:indeterminateTint="@color/colorAccent"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

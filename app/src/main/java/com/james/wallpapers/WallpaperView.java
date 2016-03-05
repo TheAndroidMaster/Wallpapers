@@ -29,6 +29,7 @@ import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,7 +79,7 @@ public class WallpaperView extends ActionBarActivity {
         auth = (TextView) findViewById(R.id.auth);
         bg = (LinearLayout) findViewById(R.id.back);
 
-        transition = new ColorDrawable(Color.TRANSPARENT);
+        transition = imageee.getDrawable();
 
         byte[] b = getIntent().getByteArrayExtra("preload");
         if (b != null) {
@@ -86,6 +87,8 @@ public class WallpaperView extends ActionBarActivity {
             imageee.setImageBitmap(bmp);
             transition = new BitmapDrawable(getResources(), bmp);
         }
+
+        imageee.setImageDrawable(transition);
 
         position = 0;
 
@@ -109,7 +112,7 @@ public class WallpaperView extends ActionBarActivity {
         wall.setText(mName);
         auth.setText(author);
 
-        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.orange)));
+        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
         fav = prefs.getBoolean(path, false);
         if(fav){
             fab.setImageResource(R.drawable.fav_added);
@@ -129,14 +132,17 @@ public class WallpaperView extends ActionBarActivity {
                         td.startTransition(200);
                         findViewById(R.id.progressBar).setVisibility(View.GONE);
 
-                        int color = getDominantColor(bmp.getBitmap());
-
-                        toolbar.setBackgroundColor(color);
-                        ((FloatingActionButton) findViewById(R.id.fab)).setBackgroundTintList(ColorStateList.valueOf(color));
-                        bg.setBackgroundColor(color);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            getWindow().setStatusBarColor(darkColor(color));
-                        };
+                        Palette.from(bmp.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+                            @Override
+                            public void onGenerated(Palette palette) {
+                                toolbar.setBackgroundColor(palette.getVibrantColor(Color.DKGRAY));
+                                ((FloatingActionButton) findViewById(R.id.fab)).setBackgroundTintList(ColorStateList.valueOf(palette.getMutedColor(Color.GRAY)));
+                                bg.setBackgroundColor(palette.getMutedColor(Color.GRAY));
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    getWindow().setStatusBarColor(darkColor(palette.getVibrantColor(Color.DKGRAY)));
+                                };
+                            }
+                        });
 
                         if(fav){
                             fab.setImageResource(R.drawable.fav_added);
@@ -269,14 +275,11 @@ public class WallpaperView extends ActionBarActivity {
     private Intent getParentActivityIntentImpl() {
         Intent i = null;
 
-        // Here you need to do some logic to determine from which Activity you came.
-        // example: you could pass a variable through your Intent extras and check that.
         if (up.matches("Flat")) {
             i = new Intent(this, Flat.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         } else if(up.matches("Fav")) {
             i = new Intent(this, Fav.class);
-            // same comments as above
         } else if(up.matches("Search")){
             i = new Intent(this, SearchActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -289,41 +292,6 @@ public class WallpaperView extends ActionBarActivity {
         Runtime.getRuntime().gc();
 
         return i;
-    }
-
-    public static int getDominantColor(Bitmap bitmap) {
-        if (null == bitmap) return Color.TRANSPARENT;
-
-        int redBucket = 0;
-        int greenBucket = 0;
-        int blueBucket = 0;
-        int alphaBucket = 0;
-
-        boolean hasAlpha = bitmap.hasAlpha();
-        int pixelCount = bitmap.getWidth() * bitmap.getHeight();
-        int[] pixels = new int[pixelCount];
-        bitmap.getPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        for (int y = 0, h = bitmap.getHeight(); y < h; y++) {
-            for (int x = 0, w = bitmap.getWidth(); x < w; x++) {
-                int color = pixels[x + y * w]; // x + y * width
-                redBucket += (color >> 16) & 0xFF; // Color.red
-                greenBucket += (color >> 8) & 0xFF; // Color.green
-                blueBucket += (color & 0xFF); // Color.blue
-                if (hasAlpha) alphaBucket += (color >>> 24); // Color.alpha
-            }
-        }
-
-        return Color.argb(
-                (hasAlpha) ? (alphaBucket / pixelCount) : 255,
-                redBucket / pixelCount,
-                greenBucket / pixelCount,
-                blueBucket / pixelCount);
-    }
-
-    public boolean isColorDark(int color){
-        double darkness = 1-(0.299*Color.red(color) + 0.587*Color.green(color) + 0.114* Color.blue(color))/255;
-        return darkness >= 0.5;
     }
 
     public void download(){
@@ -374,64 +342,37 @@ public class WallpaperView extends ActionBarActivity {
     }
 
     public void setWallpaperURL(final String src, final String folder) {
-        if(Cache.dir(folder.toLowerCase().replace(" ", "_"), this)) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        WallpaperManager myWallpaperManager = WallpaperManager.getInstance(WallpaperView.this);
-                        Bitmap overlay = Bitmap.createBitmap(myWallpaperManager.getDesiredMinimumWidth(), myWallpaperManager.getDesiredMinimumHeight(), Bitmap.Config.ARGB_8888);
-                        Bitmap wall = ((BitmapDrawable) Cache.getDrawable(folder.toLowerCase().replace(" ", "_"), src.replace("/", "").replace(":", "").replace(".", ""), src, WallpaperView.this)).getBitmap();
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    WallpaperManager manager = WallpaperManager.getInstance(WallpaperView.this);
+                    Bitmap overlay = Bitmap.createBitmap(manager.getDesiredMinimumWidth(), manager.getDesiredMinimumHeight(), Bitmap.Config.ARGB_8888);
+                    Bitmap wall = ((BitmapDrawable) Cache.getDrawable(folder.toLowerCase().replace(" ", "_"), src.replace("/", "").replace(":", "").replace(".", ""), src, WallpaperView.this)).getBitmap();
 
-                        if (wall.getHeight() >= overlay.getHeight() && wall.getWidth() >= overlay.getWidth()) {
-                            Canvas canvas = new Canvas(overlay);
-                            canvas.drawBitmap(overlay, new Matrix(), null);
-                            canvas.drawBitmap(wall, (overlay.getWidth()/2)-(wall.getWidth()/2), (overlay.getHeight()/2)-(wall.getHeight()/2), null);
+                    if (wall.getHeight() >= overlay.getHeight() && wall.getWidth() >= overlay.getWidth()) {
+                        Canvas canvas = new Canvas(overlay);
+                        canvas.drawBitmap(overlay, new Matrix(), null);
+                        canvas.drawBitmap(wall, (overlay.getWidth()/2)-(wall.getWidth()/2), (overlay.getHeight()/2)-(wall.getHeight()/2), null);
 
-                            myWallpaperManager.setBitmap(overlay);
-                        } else {
-                            myWallpaperManager.setBitmap(wall);
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        manager.setBitmap(overlay);
+                    } else {
+                        manager.setBitmap(wall);
                     }
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(WallpaperView.this, "Enjoy your new wallpaper :)", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(WallpaperView.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            }.start();
-        } else {
-            new Thread() {
-                @Override
-                public void run() {
-                    StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
-                    try {
-                        java.net.URL url = new java.net.URL(src);
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                        connection.setDoInput(true);
-                        connection.connect();
-                        InputStream input = connection.getInputStream();
-                        Bitmap bmp = BitmapFactory.decodeStream(input);
-                        connection.disconnect();
-                        WallpaperManager myWallpaperManager = WallpaperManager.getInstance(WallpaperView.this);
-                        myWallpaperManager.setBitmap(bmp);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(WallpaperView.this, "Enjoy your new wallpaper :)", Toast.LENGTH_SHORT).show();
                     }
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(WallpaperView.this, "Enjoy your new wallpaper :)", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }.start();
-        }
+                });
+            }
+        }.start();
     }
 
     @Override

@@ -29,7 +29,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:textSize="20sp"
-                android:textColor="#212121" />
+                android:textColor="@color/textColorPrimaryInverse" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
                 android:textSize="14sp"
-                android:textColor="#616161"
+                android:textColor="@color/textColorSecondaryInverse"
                 android:layout_marginBottom="8dp" />
 
         </LinearLayout>

@@ -1,37 +1,36 @@
 package com.james.wallpapers;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class IconPagerAdapter extends FragmentPagerAdapter {
-    private Context context;
 
-    public IconPagerAdapter(Context context, FragmentManager fragmentManager) {
+    IconFragment[] fragments = new IconFragment[3];
+
+    public IconPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
-        this.context = context;
+
+        Bundle bundle0 = new Bundle();
+        bundle0.putInt("icon", R.mipmap.icontwo);
+        fragments[0] = new IconFragment();
+        fragments[0].setArguments(bundle0);
+
+        Bundle bundle1 = new Bundle();
+        bundle1.putInt("icon", R.mipmap.iconone);
+        fragments[1] = new IconFragment();
+        fragments[1].setArguments(bundle1);
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putInt("icon", R.mipmap.iconthree);
+        fragments[2] = new IconFragment();
+        fragments[2].setArguments(bundle2);
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new IconFragment();
-        Bundle bundle = new Bundle();
-        switch(position) {
-            case 0:
-                bundle.putInt("icon", R.mipmap.icontwo);
-                break;
-            case 1:
-                bundle.putInt("icon", R.mipmap.iconone);
-                break;
-            case 2:
-                bundle.putInt("icon", R.mipmap.iconthree);
-                break;
-        }
-        fragment.setArguments(bundle);
-        return fragment;
+        return fragments[position];
     }
 
     @Override
@@ -39,8 +38,10 @@ public class IconPagerAdapter extends FragmentPagerAdapter {
         return 3;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return "Icon " + position;
+    public void onScroll(int position) {
+        fragments[0].selected(false);
+        fragments[1].selected(false);
+        fragments[2].selected(false);
+        fragments[position].selected(true);
     }
 }

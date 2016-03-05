@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="match_parent"
+<RelativeLayout android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -7,10 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/image"
-        android:background="@color/orange"
+        android:background="@color/colorAccent"
         android:scaleType="centerCrop"/>
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:background="#8A000000"
         android:textColor="#fff"
@@ -18,10 +18,17 @@
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingLeft="16dp"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:layout_alignBottom="@+id/image"
+        android:layout_alignLeft="@+id/image"
+        android:layout_alignRight="@+id/image" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/card"
-        android:background="?attr/selectableItemBackground" />
-</FrameLayout>
+        android:background="?attr/selectableItemBackground"
+        android:layout_alignBottom="@+id/image"
+        android:layout_alignLeft="@+id/image"
+        android:layout_alignRight="@+id/image"
+        android:layout_alignTop="@+id/image" />
+</RelativeLayout>

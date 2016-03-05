@@ -18,7 +18,7 @@
             android:foregroundGravity="bottom|right"
             android:foregroundTintMode="add"
             android:clipToPadding="true"
-            app:contentScrim="@color/blue"
+            app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed" >
 
             <ImageView
@@ -69,15 +69,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Free wallpapers for anyone to use, designed for both phones and tablets."
-                    android:id="@+id/textView5"
-                    android:textSize="15dp"
+                    android:textSize="14sp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:gravity="center_vertical|center_horizontal" />
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/textColorSecondaryInverse" />
 
                 <android.support.v7.widget.CardView
                     android:layout_height="wrap_content"
@@ -100,7 +99,6 @@
                             <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:id="@+id/imageView7"
                                 android:src="@mipmap/wallpaperhome"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="16dp" />
@@ -108,24 +106,24 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="Flat Wallpapers"
-                                android:id="@+id/textView6"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginBottom="12dp"
                                 android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp" />
+                                android:layout_marginRight="16dp"
+                                android:textSize="20sp"
+                                android:textColor="@color/textColorPrimaryInverse" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="All of these wallpapers are designed with a flat base, to make the depth of material design more convincing."
-                            android:id="@+id/textView7"
                             android:layout_marginBottom="8dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:textColor="@color/textColorSecondaryInverse"
+                            android:textSize="14sp" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -137,7 +135,7 @@
                             android:layout_marginRight="8dp"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
-                            android:textColor="@color/orange"
+                            android:textColor="@color/colorAccent"
                             android:layout_marginBottom="8dp"
                             android:layout_gravity="right" />
 
@@ -165,7 +163,6 @@
                             <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:id="@+id/imageView8243546"
                                 android:src="@mipmap/websitehome"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="16dp" />
@@ -173,24 +170,24 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="The Website"
-                                android:id="@+id/textView63523"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginBottom="12dp"
                                 android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp" />
+                                android:layout_marginRight="16dp"
+                                android:textColor="@color/textColorPrimaryInverse"
+                                android:textSize="20sp" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="The website contains information about this app and a few other apps made by me."
-                            android:id="@+id/textView9"
                             android:layout_marginBottom="8dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:textColor="@color/textColorSecondaryInverse"
+                            android:textSize="14sp" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -203,7 +200,7 @@
                             android:paddingRight="8dp"
                             android:layout_gravity="right"
                             android:background="?attr/selectableItemBackground"
-                            android:textColor="@color/orange"
+                            android:textColor="@color/colorAccent"
                             android:layout_marginBottom="8dp" />
 
                     </LinearLayout>
@@ -230,7 +227,6 @@
                             <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:id="@+id/imageView723456"
                                 android:src="@mipmap/infohome"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="16dp" />
@@ -238,24 +234,24 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="The About Section"
-                                android:id="@+id/textView632456"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginBottom="12dp"
                                 android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp" />
+                                android:layout_marginRight="16dp"
+                                android:textColor="@color/textColorPrimaryInverse"
+                                android:textSize="20sp" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Information about this app&apos;s creator and designers."
-                            android:id="@+id/textView11"
                             android:layout_marginBottom="8dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:textColor="@color/textColorSecondaryInverse"
+                            android:textSize="14sp" />
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -267,7 +263,7 @@
                             android:paddingRight="8dp"
                             android:layout_gravity="right"
                             android:background="?attr/selectableItemBackground"
-                            android:textColor="@color/orange"
+                            android:textColor="@color/colorAccent"
                             android:layout_marginBottom="8dp" />
 
                     </LinearLayout>
