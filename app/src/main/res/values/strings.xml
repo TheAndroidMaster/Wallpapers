@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Fornax</string>
+    <string name="app_desc">A collection of flat wallpapers made by everyone, for everyone.</string>
 
     <color name="white">#fff</color>
     <color name="whited">#9E9E9E</color>
@@ -888,7 +889,7 @@
     </string-array>
 
     <string-array name="people_desc" formatted="false">
-        <item>A 15 year old developer - the maker of this app! No credit is required for any of his wallpapers.</item>
+        <item>The maker of this app! No credit is required for any of my wallpapers ;)</item>
         <item>A high school student who makes awesome free wallpapers that anyone can use as long as they give credit.</item>
         <item>A google plus user who makes icons for his icon pack Colorcons in his spare time and is currently making an amazing new icon for this app! (not finished yet) He also donated a few wallpapers.</item>
         <item>An enthusiastic material-design lover from Slovenia that gave all his wallpapers (there\'s a lot) to this app. He posts them (and more) to his blog on blogspot. He also made (most of) the images used in the tutorial.</item>

@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="bottom|right"
-            android:foregroundTintMode="add"
             android:clipToPadding="true"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed" >
@@ -36,7 +35,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="212dp"
-                android:text="Fornax"
+                android:text="@string/app_name"
                 android:id="@+id/textView"
                 android:gravity="center_horizontal"
                 android:paddingTop="8dp"
@@ -49,7 +48,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="250dp"
-                android:text="A collection of flat wallpapers made by everyone, for everyone."
+                android:text="@string/app_desc"
                 android:id="@+id/textView3"
                 android:gravity="center_horizontal"
                 android:paddingLeft="16dp"
@@ -74,14 +73,13 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="About"
                         android:id="@+id/textView8"
-                        android:gravity="left|center_vertical"
+                        android:gravity="start|center_vertical"
                         android:textColor="@color/textColorPrimary"
-                        android:layout_gravity="left|center_vertical"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
                         android:textSize="20sp" />
 
@@ -92,94 +90,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="false"
-        android:id="@+id/sv"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout"
-                android:padding="4dp">
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Special thanks to Justin Kruit for letting me rent his server to load all these wallpapers. They&apos;re over 3 GB total."
-                android:id="@+id/jk"
-                android:gravity="center"
-                android:textSize="14sp"
-                android:background="?attr/selectableItemBackground"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:textColor="@color/textColorSecondaryInverse" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Also thanks to Jared Gauthier for making Fornax&apos;s amazing icons!"
-                android:id="@+id/jg"
-                android:gravity="center"
-                android:textSize="14sp"
-                android:background="?attr/selectableItemBackground"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"
-                android:textColor="@color/textColorSecondaryInverse" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:elevation="2dp"
-                android:background="#fff">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="6"
-                    android:src="@mipmap/libraries"
-                    android:padding="4dp" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="Implemented Libraries"
-                    android:id="@+id/textView2"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/repos"
-                android:padding="4dp">
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/recycler"
+        android:padding="4dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"/>
 
 </android.support.design.widget.CoordinatorLayout>

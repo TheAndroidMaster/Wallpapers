@@ -6,19 +6,25 @@ import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends AppCompatActivity {
+
+    RecyclerView recycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,34 +82,15 @@ public class MainActivity extends ActionBarActivity {
         toolbar.inflateMenu(R.menu.menu_main);
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.imageView3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://theandroidmaster.github.io/")));
-            }
-        });
+        ArrayList<Parcelable> items = new ArrayList<>();
+        items.add(new HeaderListData(null, getResources().getString(R.string.app_desc), true, null));
+        items.add(new PersonListData(R.mipmap.wallpaperhome, "Flat Wallpapers", "All of these wallpapers are designed with a flat base, to make the depth of material design seem more convincing.", new Intent(MainActivity.this, Flat.class)));
+        items.add(new PersonListData(R.mipmap.websitehome, "The Website", "The website contains information about this app and a few other apps made by me.", new Intent(Intent.ACTION_VIEW, Uri.parse("http://theandroidmaster.github.io"))));
+        items.add(new PersonListData(R.mipmap.infohome, "The About Section", "Information about this app's creator and designers.", new Intent(MainActivity.this, About.class)));
 
-        findViewById(R.id.imageView4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Flat.class));
-            }
-        });
-
-        findViewById(R.id.imageView6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, About.class));
-            }
-        });
-
-        findViewById(R.id.imageView6).setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                startActivity(new Intent(MainActivity.this, FirstTime.class));
-                return true;
-            }
-        });
+        recycler = (RecyclerView) findViewById(R.id.recycler);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setAdapter(new AboutAdapter(this, items));
 
         new Drawer(this).initDrawer(toolbar);
     }
@@ -123,18 +110,5 @@ public class MainActivity extends ActionBarActivity {
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return startMain;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-
-        return super.onOptionsItemSelected(item);
     }
 }
