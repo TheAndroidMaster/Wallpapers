@@ -21,10 +21,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp">
 
-                <ImageView
+                <com.james.wallpapers.views.CircleImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icontwo"
+                    android:src="@mipmap/wpicon"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="16dp"
                     android:id="@+id/profile" />
@@ -51,7 +51,8 @@
                 android:layout_marginRight="16dp"
                 android:textColor="@color/textColorSecondaryInverse"
                 android:textSize="14sp"
-                android:id="@+id/content" />
+                android:id="@+id/content"
+                android:layout_marginTop="8dp" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

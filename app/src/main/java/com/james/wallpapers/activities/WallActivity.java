@@ -53,7 +53,6 @@ public class WallActivity extends AppCompatActivity {
     TextView wall, auth;
     LinearLayout bg;
     FloatingActionButton fab;
-    ProgressBar progressBar;
     View download, share, apply;
 
     @Override
@@ -70,7 +69,6 @@ public class WallActivity extends AppCompatActivity {
         wall = (TextView) findViewById(R.id.wall);
         auth = (TextView) findViewById(R.id.auth);
         bg = (LinearLayout) findViewById(R.id.back);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         download = findViewById(R.id.download);
         share = findViewById(R.id.share);
         apply = findViewById(R.id.apply);
@@ -86,11 +84,10 @@ public class WallActivity extends AppCompatActivity {
 
         if(data.favorite) fab.setImageResource(R.drawable.fav_added);
 
-        Glide.with(this).load(data.url).into(new SimpleTarget<GlideDrawable>() {
+        Glide.with(this).load(data.url).into(new SimpleTarget<GlideDrawable>(imageee.getWidth(), imageee.getHeight()) {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                 imageee.setImageDrawable(resource);
-                progressBar.setVisibility(View.GONE);
 
                 Palette.from(Utils.drawableToBitmap(resource)).generate(new Palette.PaletteAsyncListener() {
                     @Override

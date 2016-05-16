@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         .withProfileImagesClickable(false)
                         .withSelectionListEnabledForSingleProfile(false)
                         .addProfiles(
-                                new ProfileDrawerItem().withName("Fornax").withEmail("Version " + BuildConfig.VERSION_NAME).withIcon(ContextCompat.getDrawable(this, R.mipmap.wpicon))
+                                new ProfileDrawerItem().withName(getString(R.string.app_name)).withEmail("Version " + BuildConfig.VERSION_NAME).withIcon(ContextCompat.getDrawable(this, R.mipmap.wpicon))
                         )
                         .build())
                 .withSelectedItem(0)
@@ -99,15 +99,15 @@ public class MainActivity extends AppCompatActivity {
                         switch ((int) drawerItem.getIdentifier()) {
                             case 1:
                                 fragment = new HomeFragment();
-                                setTitle(getString(R.string.title_home));
+                                toolbar.setTitle(getString(R.string.title_home));
                                 break;
                             case 2:
                                 fragment = new WallpaperFragment();
-                                setTitle(getString(R.string.title_wallpapers));
+                                toolbar.setTitle(getString(R.string.title_wallpapers));
                                 break;
                             case 3:
                                 fragment = new FavFragment();
-                                setTitle(getString(R.string.title_favorites));
+                                toolbar.setTitle(getString(R.string.title_favorites));
                                 break;
                             case 4:
                                 startActivity(new Intent(MainActivity.this, AboutActivity.class));
@@ -163,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                break;
             case R.id.action_search:
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 break;

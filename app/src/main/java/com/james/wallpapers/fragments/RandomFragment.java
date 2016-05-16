@@ -22,9 +22,8 @@ public class RandomFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recycler, container, false);
+        RecyclerView recycler = (RecyclerView) inflater.inflate(R.layout.fragment_recycler, container, false);
 
-        RecyclerView recycler = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         recycler.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         ArrayList<WallData> walls = Supplier.getWallpapers(getContext());
@@ -32,6 +31,6 @@ public class RandomFragment extends Fragment {
 
         recycler.setAdapter(new ListAdapter(getActivity(), walls));
 
-        return v;
+        return recycler;
     }
 }

@@ -19,14 +19,13 @@ public class ListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recycler, container, false);
+       recycler = (RecyclerView) inflater.inflate(R.layout.fragment_recycler, container, false);
 
-        recycler = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         recycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         id = getArguments().getInt("id");
         if (id == -1) recycler.setAdapter(new ListAdapter(getActivity(), Supplier.getWallpapers(getContext())));
         else recycler.setAdapter(new ListAdapter(getActivity(), Supplier.getWallpapers(getContext(), id)));
-        return v;
+        return recycler;
     }
 }

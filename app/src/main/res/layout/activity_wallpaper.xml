@@ -5,12 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"/>
+
     <com.james.wallpapers.views.CustomImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageee"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/wpicon" />
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -144,7 +149,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/image_gradient"
+        android:background="@drawable/gradient"
         android:layout_gravity="top"
         android:fitsSystemWindows="true">
 
@@ -156,13 +161,6 @@
             android:background="@android:color/transparent"/>
 
     </FrameLayout>
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_gravity="center"
-        android:indeterminate="true"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

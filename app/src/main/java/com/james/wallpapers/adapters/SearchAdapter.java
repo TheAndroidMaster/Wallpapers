@@ -102,11 +102,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         authors.clear();
 
         for (WallData data : totalWalls) {
-            if (data.name.contains(filter) || filter.contains(data.name)) walls.add(data);
+            if (data.name.toLowerCase().contains(filter.toLowerCase()) || filter.toLowerCase().contains(data.name.toLowerCase())) walls.add(data);
         }
 
         for (AuthorData data : totalAuthors) {
-            if (data.name.contains(filter) || filter.contains(data.name)) authors.add(data);
+            if (data.name.toLowerCase().contains(filter.toLowerCase()) || filter.toLowerCase().contains(data.name.toLowerCase())) authors.add(data);
         }
 
         notifyDataSetChanged();

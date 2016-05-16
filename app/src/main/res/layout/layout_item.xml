@@ -2,17 +2,25 @@
 <RelativeLayout android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:background="#fff"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        style="?attr/progressBarStyle"/>
+
     <com.james.wallpapers.views.SquareImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/image"
-        android:background="@color/colorAccent"
         android:scaleType="centerCrop"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:background="#8A000000"
+        android:background="@drawable/gradient_flipped"
         android:textColor="#fff"
         android:id="@+id/title"
         android:paddingTop="16dp"

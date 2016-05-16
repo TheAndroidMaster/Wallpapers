@@ -42,7 +42,6 @@ public class WallpaperFragment extends Fragment {
 
     TabLayout tabLayout;
     CustomImageView header, headerIcon;
-    TextView title;
 
     ArtistPagerAdapter adapter;
     ViewPager viewPager;
@@ -56,7 +55,6 @@ public class WallpaperFragment extends Fragment {
         collapsingToolbarLayout = (CollapsingToolbarLayout) v.findViewById(R.id.collapsing_toolbar);
         header = (CustomImageView) v.findViewById(R.id.header);
         headerIcon = (CustomImageView) v.findViewById(R.id.headerIcon);
-        title = (TextView) v.findViewById(R.id.title);
         viewPager = (ViewPager) v.findViewById(R.id.pager);
         tabLayout = (TabLayout) v.findViewById(R.id.tl);
 
@@ -79,32 +77,10 @@ public class WallpaperFragment extends Fragment {
 
     public void refresh(int position) {
         AuthorData authorData = Supplier.getAuthors(getContext()).get(position);
-        title.setText(authorData.name);
-        Glide.with(getContext()).load(authorData.image).into(new SimpleTarget<GlideDrawable>() {
-            @Override
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                headerIcon.transition(getActivity(), resource);
-            }
-        });
+        Glide.with(getContext()).load(authorData.image).into(headerIcon);
 
         ArrayList<WallData> walls = Supplier.getWallpapers(getContext(), position);
         Random rand = new Random();
-        Glide.with(getContext()).load(walls.get(rand.nextInt(walls.size())).url).into(new SimpleTarget<GlideDrawable>() {
-            @Override
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                header.transition(getActivity(), resource);
-
-                Palette.from(Utils.drawableToBitmap(resource)).generate(new Palette.PaletteAsyncListener() {
-                    @Override
-                    public void onGenerated(Palette palette) {
-                        collapsingToolbarLayout.setContentScrimColor(palette.getLightVibrantColor(Color.LTGRAY));
-
-                        TransitionDrawable td = new TransitionDrawable(new Drawable[]{tabLayout.getBackground(), new ColorDrawable(palette.getLightVibrantColor(Color.LTGRAY))});
-                        tabLayout.setBackground(td);
-                        td.startTransition(250);
-                    }
-                });
-            }
-        });
+        Glide.with(getContext()).load(walls.get(rand.nextInt(walls.size())).url).into(header);
     }
 }

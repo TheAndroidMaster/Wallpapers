@@ -24,9 +24,7 @@ public class FavFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recycler, container, false);
-
-        recycler = (RecyclerView) v.findViewById(R.id.my_recycler_view);
+        recycler = (RecyclerView) inflater.inflate(R.layout.fragment_fav, container, false);
 
         walls = new ArrayList<>();
         for (WallData data : Supplier.getWallpapers(getContext())) {
@@ -38,6 +36,6 @@ public class FavFragment extends Fragment {
         adapter.setLayoutMode(ListAdapter.LAYOUT_MODE_COMPLEX);
         recycler.setAdapter(adapter);
 
-        return v;
+        return recycler;
     }
 }

@@ -2,12 +2,16 @@ package com.james.wallpapers;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 
 public class Utils {
 
     public static Bitmap drawableToBitmap(Drawable drawable) {
+        if (drawable == null) drawable = new ColorDrawable(Color.TRANSPARENT);
+
         Bitmap bitmap;
 
         if (drawable instanceof BitmapDrawable) {
