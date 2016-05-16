@@ -19,23 +19,19 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://github.com/500px/greedo-layout-for-android/raw/master/releases/' }
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:support-v4:23.2.0'
-    compile 'com.android.support:cardview-v7:23.2.0'
-    compile 'com.android.support:recyclerview-v7:23.2.0'
-    compile('com.mikepenz:materialdrawer:3.0.7@aar') {
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile('com.mikepenz:materialdrawer:5.2.0@aar') {
         transitive = true
     }
-    compile 'com.android.support:design:23.2.0'
+    compile 'com.android.support:design:23.3.0'
     compile 'com.alexandrepiveteau:material-tutorial:1.1.0'
     compile 'com.google.android.apps.muzei:muzei-api:2.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:palette-v7:23.2.0'
+    compile 'com.android.support:palette-v7:23.3.0'
 }

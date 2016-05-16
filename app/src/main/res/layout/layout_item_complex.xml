@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.james.wallpapers.views.CustomImageView
+        android:layout_width="match_parent"
+        android:layout_height="288dp"
+        android:id="@+id/image"
+        android:background="@color/colorAccent"
+        android:scaleType="centerCrop"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/card"
+        android:background="?attr/selectableItemBackground"
+        android:layout_alignBottom="@id/image"
+        android:layout_alignLeft="@id/image"
+        android:layout_alignStart="@id/image"
+        android:layout_alignRight="@id/image"
+        android:layout_alignEnd="@id/image"
+        android:layout_alignTop="@id/image" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#8A000000"
+        android:layout_gravity="bottom"
+        android:layout_alignBottom="@id/image"
+        android:layout_alignLeft="@id/image"
+        android:layout_alignStart="@id/image"
+        android:layout_alignRight="@id/image"
+        android:layout_alignEnd="@id/image"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
+            android:id="@+id/title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorSecondary"
+            android:id="@+id/author"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <com.james.wallpapers.views.SquareImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/social"
+            android:tint="@color/textColorPrimary"
+            android:id="@+id/share"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <com.james.wallpapers.views.SquareImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/textColorPrimary"
+            android:src="@drawable/fav_add"
+            android:id="@+id/fav"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <com.james.wallpapers.views.SquareImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wallpaper"
+            android:tint="@color/textColorPrimary"
+            android:id="@+id/apply"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+    </LinearLayout>
+</RelativeLayout>

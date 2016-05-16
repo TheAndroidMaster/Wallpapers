@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -18,95 +16,52 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="Fornax" >
-        </activity>
-
-        <activity-alias
-            android:name=".MainActOne"
-            android:targetActivity=".MainActivity"
-            android:icon="@mipmap/icontwo"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
-
-        <activity-alias
-            android:name=".MainActTwo"
-            android:targetActivity=".MainActivity"
-            android:icon="@mipmap/iconone"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
-
-        <activity-alias
-            android:name=".MainActThree"
-            android:targetActivity=".MainActivity"
-            android:icon="@mipmap/iconthree"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
-
-        <activity
-            android:name=".Flat"
+            android:name=".activities.MainActivity"
             android:label="Fornax"
-            android:theme="@style/AppThemeLight" >
+            android:icon="@mipmap/icontwo">
             <intent-filter>
-                <action android:name="android.intent.action.SET_WALLPAPER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".SearchActivity"
-            android:label="Search Fornax" >
+            android:name=".activities.WallActivity"
+            android:label="Wallpaper"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="Search"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".WallpaperView"
-            android:label="Wallpaper"
-            android:parentActivityName=".Flat"
-            android:theme="@style/AppTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.james.wallpapers.Flat" />
-        </activity>
-        <activity
-            android:name=".Fav"
-            android:label="@string/title_activity_fav"
-            android:theme="@style/AppThemeLight" >
-        </activity>
-        <activity
-            android:name=".About"
-            android:label="@string/title_activity_about"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.james.wallpapers.MainActivity" />
-        </activity>
-        <activity
-            android:name=".FirstTime"
-            android:label="@string/title_activity_first_time" >
-        </activity>
 
         <activity
-            android:name=".SaveOfflineActivity"
-            android:label="Save Offline">
+            android:name=".activities.AboutActivity"
+            android:label="@string/title_about"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
         </activity>
+
+        <activity android:name=".activities.FirstTime"/>
 
         <service android:name=".MuzeiArtSource"
             android:icon="@drawable/muzeiartwork"
-            android:label="Fornax"
+            android:label="@string/app_name"
             android:description="@string/description">
             <intent-filter>
                 <action android:name="com.google.android.apps.muzei.api.MuzeiArtSource" />
