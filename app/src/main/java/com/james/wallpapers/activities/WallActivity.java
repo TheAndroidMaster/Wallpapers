@@ -22,6 +22,7 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -84,7 +85,10 @@ public class WallActivity extends AppCompatActivity {
 
         if(data.favorite) fab.setImageResource(R.drawable.fav_added);
 
-        Glide.with(this).load(data.url).into(new SimpleTarget<GlideDrawable>(imageee.getWidth(), imageee.getHeight()) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        Glide.with(this).load(data.url).into(new SimpleTarget<GlideDrawable>(metrics.widthPixels, metrics.heightPixels) {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                 imageee.setImageDrawable(resource);
