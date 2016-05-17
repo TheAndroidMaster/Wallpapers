@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.james.wallpapers.R;
 import com.james.wallpapers.fragments.FeaturedFragment;
-import com.james.wallpapers.fragments.ListFragment;
+import com.james.wallpapers.fragments.RandomFragment;
 
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
 
@@ -25,11 +25,7 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new FeaturedFragment();
             case 1:
-                Bundle args = new Bundle();
-                args.putInt("id", -1);
-                Fragment f = new ListFragment();
-                f.setArguments(args);
-                return f;
+                return new RandomFragment();
             default:
                 return null;
         }
