@@ -24,7 +24,7 @@ public class ListFragment extends Fragment {
 
         recycler.setLayoutManager(new GridLayoutManager(getContext(), metrics.widthPixels > metrics.heightPixels ? 3 : 2));
 
-        recycler.setAdapter(new ListAdapter(getActivity(), Supplier.getWallpapers(getContext(), getArguments().getInt("id"))));
+        recycler.setAdapter(new ListAdapter(getActivity(), ((Supplier) getContext().getApplicationContext()).getWallpapers(getContext(), getArguments().getInt("id"))));
         return recycler;
     }
 }

@@ -38,9 +38,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
     public SearchAdapter(Activity activity) {
+        Supplier supplier = (Supplier) activity.getApplicationContext();
+
         this.activity = activity;
-        totalWalls = Supplier.getWallpapers(activity);
-        totalAuthors = Supplier.getAuthors(activity);
+        totalWalls = supplier.getWallpapers(activity);
+        totalAuthors = supplier.getAuthors(activity);
         walls = new ArrayList<>();
         authors = new ArrayList<>();
     }

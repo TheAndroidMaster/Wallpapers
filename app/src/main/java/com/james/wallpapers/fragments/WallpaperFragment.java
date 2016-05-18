@@ -76,10 +76,12 @@ public class WallpaperFragment extends Fragment {
     }
 
     public void refresh(int position) {
-        AuthorData authorData = Supplier.getAuthors(getContext()).get(position);
+        Supplier supplier = (Supplier) getContext().getApplicationContext();
+
+        AuthorData authorData = supplier.getAuthors(getContext()).get(position);
         Glide.with(getContext()).load(authorData.image).into(headerIcon);
 
-        ArrayList<WallData> walls = Supplier.getWallpapers(getContext(), position);
+        ArrayList<WallData> walls = supplier.getWallpapers(getContext(), position);
         Random rand = new Random();
         Glide.with(getContext()).load(walls.get(rand.nextInt(walls.size())).url).into(header);
     }

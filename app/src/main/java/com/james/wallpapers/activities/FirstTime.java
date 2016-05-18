@@ -62,7 +62,7 @@ public class FirstTime extends TutorialActivity  {
                         .build();
             case 1:
                 return new TutorialFragment.Builder()
-                        .setTitle(Supplier.getWallpapers(this).size() + " Wallpapers")
+                        .setTitle(((Supplier) getApplicationContext()).getWallpapers(this).size() + " Wallpapers")
                         .setDescription(getString(R.string.wallpapers_desc))
                         .setImageResource(R.mipmap.star)
                         .setImageResourceBackground(R.mipmap.frames)

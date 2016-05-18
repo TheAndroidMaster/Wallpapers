@@ -27,7 +27,7 @@ public class FavFragment extends Fragment {
         recycler = (RecyclerView) inflater.inflate(R.layout.fragment_fav, container, false);
 
         walls = new ArrayList<>();
-        for (WallData data : Supplier.getWallpapers(getContext())) {
+        for (WallData data : ((Supplier) getContext().getApplicationContext()).getWallpapers(getContext())) {
             if (data.favorite) walls.add(data);
         }
 

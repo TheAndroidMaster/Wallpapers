@@ -48,6 +48,7 @@ public class WallActivity extends AppCompatActivity {
 
     WallData data;
     BroadcastReceiver downloadReceiver;
+    Supplier supplier;
 
     Toolbar toolbar;
     ImageView imageee;
@@ -60,6 +61,8 @@ public class WallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallpaper);
+
+        supplier = (Supplier) getApplicationContext();
 
         data = getIntent().getParcelableExtra("wall");
         setTitle(data.name);
@@ -116,15 +119,15 @@ public class WallActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (data.credit) {
-                    Supplier.getCreditDialog(WallActivity.this, new DialogInterface.OnClickListener() {
+                    supplier.getCreditDialog(WallActivity.this, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Supplier.downloadWallpaper(WallActivity.this, data);
+                            supplier.downloadWallpaper(WallActivity.this, data);
                             dialog.dismiss();
                         }
                     }).show();
                 }
-                else Supplier.downloadWallpaper(WallActivity.this, data);
+                else supplier.downloadWallpaper(WallActivity.this, data);
             }
         });
 
@@ -132,15 +135,15 @@ public class WallActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (data.credit) {
-                    Supplier.getCreditDialog(WallActivity.this, new DialogInterface.OnClickListener() {
+                    supplier.getCreditDialog(WallActivity.this, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Supplier.shareWallpaper(WallActivity.this, data);
+                            supplier.shareWallpaper(WallActivity.this, data);
                             dialog.dismiss();
                         }
                     }).show();
                 }
-                else Supplier.shareWallpaper(WallActivity.this, data);
+                else supplier.shareWallpaper(WallActivity.this, data);
             }
         });
 
@@ -171,7 +174,7 @@ public class WallActivity extends AppCompatActivity {
         downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Supplier.getDownloadedDialog(WallActivity.this, new DialogInterface.OnClickListener() {
+                supplier.getDownloadedDialog(WallActivity.this, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         WallActivity.this.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));

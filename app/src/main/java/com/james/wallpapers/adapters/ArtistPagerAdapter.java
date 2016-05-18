@@ -18,7 +18,7 @@ public class ArtistPagerAdapter extends FragmentStatePagerAdapter {
 
     public ArtistPagerAdapter(Context context, FragmentManager fragmentManager) {
         super(fragmentManager);
-        datas = Supplier.getAuthors(context);
+        datas = ((Supplier) context.getApplicationContext()).getAuthors(context);
     }
 
     @Override

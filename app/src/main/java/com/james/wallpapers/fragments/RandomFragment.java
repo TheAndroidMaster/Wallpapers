@@ -31,7 +31,7 @@ public class RandomFragment extends Fragment {
 
         recycler.setLayoutManager(new GridLayoutManager(getContext(), metrics.widthPixels > metrics.heightPixels ? 3 : 2));
 
-        ArrayList<WallData> walls = Supplier.getWallpapers(getContext());
+        ArrayList<WallData> walls = ((Supplier) getContext().getApplicationContext()).getWallpapers(getContext());
         Collections.sort(walls, new Comparator<WallData>() {
             @Override
             public int compare(WallData first, WallData second) {

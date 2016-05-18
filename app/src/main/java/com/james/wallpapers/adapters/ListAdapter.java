@@ -38,6 +38,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private int layoutMode = 0;
     public final static int LAYOUT_MODE_HORIZONTAL = 1, LAYOUT_MODE_COMPLEX = 2;
 
+    private Supplier supplier;
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View v;
         public View imagel;
@@ -51,6 +53,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public ListAdapter(Activity activity, ArrayList<WallData> walls) {
         this.activity = activity;
         this.walls = walls;
+        supplier = (Supplier) activity.getApplicationContext();
     }
 
     public void setLayoutMode(int mode) {
@@ -111,15 +114,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     if (walls.get(holder.getAdapterPosition()).credit) {
-                        Supplier.getCreditDialog(activity, new DialogInterface.OnClickListener() {
+                        supplier.getCreditDialog(activity, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Supplier.downloadWallpaper(activity, walls.get(holder.getAdapterPosition()));
+                                supplier.downloadWallpaper(activity, walls.get(holder.getAdapterPosition()));
                                 dialog.dismiss();
                             }
                         }).show();
                     }
-                    else Supplier.shareWallpaper(activity, walls.get(holder.getAdapterPosition()));
+                    else supplier.shareWallpaper(activity, walls.get(holder.getAdapterPosition()));
                 }
             });
 

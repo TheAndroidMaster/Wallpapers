@@ -45,7 +45,7 @@ public class AboutActivity extends AppCompatActivity {
         if (getResources().getBoolean(R.bool.show_contributors)) {
             items.add(new HeaderListData(getString(R.string.contributors), null, true, null));
 
-            for (AuthorData data : Supplier.getAuthors(this)) {
+            for (AuthorData data : ((Supplier) getApplicationContext()).getAuthors(this)) {
                 items.add(new PersonListData(data.image, data.name, data.description, data.url));
             }
         }

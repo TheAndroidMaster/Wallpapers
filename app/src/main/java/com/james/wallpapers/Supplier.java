@@ -31,7 +31,7 @@ public class Supplier extends Application {
     }
 
     //get a list of the different sections
-    public static ArrayList<AuthorData> getAuthors(Context context) {
+    public ArrayList<AuthorData> getAuthors(Context context) {
         ArrayList<AuthorData> authors = new ArrayList<>();
         String[] authorNames = context.getResources().getStringArray(R.array.people_names);
         String[] authorIcons = context.getResources().getStringArray(R.array.people_icons);
@@ -52,7 +52,7 @@ public class Supplier extends Application {
     }
 
     //get a list of the different wallpapers
-    public static ArrayList<WallData> getWallpapers(Context context) {
+    public ArrayList<WallData> getWallpapers(Context context) {
         ArrayList<WallData> walls = new ArrayList<>();
 
         String[] authorNames = context.getResources().getStringArray(R.array.people_names);
@@ -75,7 +75,7 @@ public class Supplier extends Application {
         return walls;
     }
 
-    public static ArrayList<WallData> getWallpapers(Context context, int authorId) {
+    public ArrayList<WallData> getWallpapers(Context context, int authorId) {
         ArrayList<WallData> walls = new ArrayList<>();
 
         TypedArray wallNames = context.getResources().obtainTypedArray(R.array.wp_names);
@@ -97,7 +97,7 @@ public class Supplier extends Application {
     }
 
     //additional info to put in the about section
-    public static ArrayList<HeaderListData> getAdditionalInfo(Context context) {
+    public ArrayList<HeaderListData> getAdditionalInfo(Context context) {
         ArrayList<HeaderListData> headers = new ArrayList<>();
 
         //specify title (optional), description (optional), whether to center the content, and a url (optional)
@@ -107,7 +107,7 @@ public class Supplier extends Application {
         return headers;
     }
 
-    public static AlertDialog getCreditDialog(Context context, DialogInterface.OnClickListener onClickListener) {
+    public AlertDialog getCreditDialog(Context context, DialogInterface.OnClickListener onClickListener) {
         //dialog to be shown when credit is required
         return new AlertDialog.Builder(context)
                 .setTitle(R.string.credit_required)
@@ -116,7 +116,7 @@ public class Supplier extends Application {
                 .create();
     }
 
-    public static void downloadWallpaper(Context context, WallData data) {
+    public void downloadWallpaper(Context context, WallData data) {
         //start a download
         DownloadManager.Request r = new DownloadManager.Request(Uri.parse(data.url));
         r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, data.name + ".png");
@@ -132,13 +132,13 @@ public class Supplier extends Application {
         progressBarDialog.show();
     }
 
-    public static AlertDialog getDownloadedDialog(Context context, DialogInterface.OnClickListener onClickListener) {
+    public AlertDialog getDownloadedDialog(Context context, DialogInterface.OnClickListener onClickListener) {
         //dialog to be shown upon completion of a download
         return new AlertDialog.Builder(context).setTitle(R.string.download_complete).setMessage(R.string.download_complete_msg).setPositiveButton("View", onClickListener).create();
     }
 
     //share a wallpaper
-    public static void shareWallpaper(Context context, WallData data) {
+    public void shareWallpaper(Context context, WallData data) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_STREAM, String.valueOf(Uri.parse(data.url)));

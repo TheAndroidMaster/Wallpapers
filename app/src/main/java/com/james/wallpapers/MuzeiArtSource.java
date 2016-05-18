@@ -16,7 +16,7 @@ public class MuzeiArtSource extends com.google.android.apps.muzei.api.MuzeiArtSo
     }
 
     protected void onUpdate(int reason) {
-        ArrayList<WallData> walls = Supplier.getWallpapers(this);
+        ArrayList<WallData> walls = ((Supplier) getApplicationContext()).getWallpapers(this);
         WallData data = walls.get(new Random().nextInt(walls.size()));
 
         publishArtwork(new Artwork.Builder()

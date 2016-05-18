@@ -26,7 +26,7 @@ public class FeaturedFragment extends Fragment {
 
         recycler.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        ArrayList<WallData> totalWalls = Supplier.getWallpapers(getContext());
+        ArrayList<WallData> totalWalls = ((Supplier) getContext().getApplicationContext()).getWallpapers(getContext());
         ArrayList<WallData> walls = new ArrayList<>();
         Random rand = new Random();
         for (int i = 0; i < Math.min(10, totalWalls.size()); i++) {
