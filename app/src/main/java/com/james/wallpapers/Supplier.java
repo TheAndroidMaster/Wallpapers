@@ -110,8 +110,8 @@ public class Supplier extends Application {
     public static AlertDialog getCreditDialog(Context context, DialogInterface.OnClickListener onClickListener) {
         //dialog to be shown when credit is required
         return new AlertDialog.Builder(context)
-                .setTitle(R.string.download_complete)
-                .setMessage(R.string.download_complete_msg)
+                .setTitle(R.string.credit_required)
+                .setMessage(R.string.credit_required_msg)
                 .setPositiveButton("OK", onClickListener)
                 .create();
     }
