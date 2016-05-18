@@ -14,13 +14,13 @@
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed" >
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:background="#fff">
 
                 <com.james.wallpapers.views.CustomImageView
                     android:id="@+id/header"
                     android:layout_width="match_parent"
                     android:layout_height="252dp"
-                    android:src="@mipmap/wpicon"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
@@ -29,28 +29,25 @@
                     android:layout_height="match_parent"
                     android:paddingBottom="48dp"
                     android:paddingTop="?attr/actionBarSize"
-                    android:background="#B8ffffff"
-                    android:id="@+id/background">
+                    android:background="@color/colorPrimary"
+                    android:alpha="0.6" />
 
-                    <com.james.wallpapers.views.CircleImageView
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@mipmap/wpicon"
-                        android:id="@+id/headerIcon"
-                        android:layout_gravity="center"/>
-
-                </FrameLayout>
+                <com.james.wallpapers.views.CircleImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@mipmap/wpicon"
+                    android:id="@+id/headerIcon"
+                    android:layout_gravity="center"/>
 
                 <android.support.design.widget.TabLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:id="@+id/tl"
                     android:fitsSystemWindows="true"
-                    app:tabIndicatorColor="@color/textColorPrimaryInverse"
-                    app:tabSelectedTextColor="@color/textColorPrimaryInverse"
-                    app:tabTextColor="@color/textColorSecondaryInverse"
-                    android:layout_gravity="bottom"
-                    android:background="@android:color/transparent" />
+                    app:tabIndicatorColor="@color/textColorPrimary"
+                    app:tabSelectedTextColor="@color/textColorPrimary"
+                    app:tabTextColor="@color/textColorSecondary"
+                    android:layout_gravity="bottom" />
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

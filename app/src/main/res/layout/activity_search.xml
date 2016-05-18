@@ -25,9 +25,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     android:id="@+id/searchView"
-                    app:queryHint="Search...">
-                    <requestFocus/>
-                </android.support.v7.widget.SearchView>
+                    app:queryHint="Search..."/>
 
             </android.support.v7.widget.Toolbar>
 

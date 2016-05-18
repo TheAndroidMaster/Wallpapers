@@ -28,7 +28,6 @@ public class AboutActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RecyclerView recycler;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +36,18 @@ public class AboutActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recycler = (RecyclerView) findViewById(R.id.recycler);
-        textView = (TextView) findViewById(R.id.textView);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        textView.setText(textView.getText() + BuildConfig.VERSION_NAME);
-
         ArrayList<Parcelable> items = new ArrayList<>();
 
-        items.add(new HeaderListData(getString(R.string.contributors), null, true, null));
+        if (getResources().getBoolean(R.bool.show_contributors)) {
+            items.add(new HeaderListData(getString(R.string.contributors), null, true, null));
 
-        for (AuthorData data : Supplier.getAuthors(this)) {
-            items.add(new PersonListData(data.image, data.name, data.description, data.url));
+            for (AuthorData data : Supplier.getAuthors(this)) {
+                items.add(new PersonListData(data.image, data.name, data.description, data.url));
+            }
         }
 
         String[] headers = getResources().getStringArray(R.array.namey);

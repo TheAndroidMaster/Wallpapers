@@ -30,12 +30,12 @@
     <string name="download_complete_msg">Your wallpaper has been downloaded.</string>
 
     <!-- Shows as a popup whenever the version number in app/build.gradle is changed -->
-    <!-- Use <br/> for line breaks -->
-    <string name="changelog">
-        - redesigned ui for easier navigation<br/>
-        - greatly improved performance<br/>
-        - added a few walls
+    <string name="changelog">Redesigned the UI for easier navigation, greatly improved performance, and added a few more walls.
     </string>
+
+
+    <!-- Specify whether to show the contributors in the about section -->
+    <bool name="show_contributors">true</bool>
 
     <string name="contributors">Contributors:</string>
 
@@ -957,5 +957,24 @@
         <item>https://github.com/mikepenz/MaterialDrawer</item>
         <item>https://github.com/bumptech/glide</item>
     </string-array>
+
+    <!-- tutorial resources -->
+    <string name="wallpapers_desc">New wallpapers are always being added, and the app is improved a little every time.</string>
+    <string name="design_title">Flat Design</string>
+    <string name="design_desc">All wallpapers are made from scratch, based on a flat sheet.</string>
+    <string name="favorites_title">Favorites Section</string>
+    <string name="favorites_desc">The favorites section is a place for you to keep all your favorite wallpapers.</string>
+    <string name="community_title">Join the Community</string>
+    <string name="community_desc">Join the google plus community for news about upcoming updates, more wallpapers, and pictures of cute cats.</string>
+    <string name="community_url">https://plus.google.com/communities/104074488451953797559</string>
+    <string name="rate_title">Ratings and Reviews</string>
+    <string name="rate_desc">Reviews are always appreciated. Please provide some feedback about your experience with this app.</string>
+
+    <color name="intro_color">#2196F3</color>
+    <color name="wallpapers_color">#009688</color>
+    <color name="design_color">#212121</color>
+    <color name="favorites_color">#607D8B</color>
+    <color name="community_color">#F44336</color>
+    <color name="rate_color">#2196F3</color>
 
 </resources>

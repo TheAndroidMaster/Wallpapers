@@ -1,5 +1,6 @@
 package com.james.wallpapers;
 
+import android.app.Application;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,7 +22,13 @@ import com.james.wallpapers.data.WallData;
 
 import java.util.ArrayList;
 
-public class Supplier {
+public class Supplier extends Application {
+
+    public void getNetworkResources() {
+        //download any resources needed for the voids below while the splash screen is showing
+        //yes, this is thread-safe
+        //no, it is not needed for the current setup since all the resources are in res/values/strings.xml
+    }
 
     //get a list of the different sections
     public static ArrayList<AuthorData> getAuthors(Context context) {

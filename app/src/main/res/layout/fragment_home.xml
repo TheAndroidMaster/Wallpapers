@@ -14,8 +14,8 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed" >
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:background="@color/colorPrimary">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -52,8 +52,7 @@
                 app:tabIndicatorColor="@color/textColorPrimary"
                 app:tabSelectedTextColor="@color/textColorPrimary"
                 app:tabTextColor="@color/textColorSecondary"
-                android:layout_gravity="bottom"
-                android:background="@color/colorPrimary" />
+                android:layout_gravity="bottom" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

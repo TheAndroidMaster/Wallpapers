@@ -100,8 +100,9 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                 ((TextView) holder.v.findViewById(R.id.header)).setText(textData.name);
                 ((TextView) holder.v.findViewById(R.id.content)).setText(textData.content);
 
-                holder.v.findViewById(R.id.card).setTag(textData);
-                holder.v.findViewById(R.id.card).setOnClickListener(new View.OnClickListener() {
+                View card = holder.v.findViewById(R.id.card);
+                card.setTag(textData);
+                card.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         activity.startActivity(((TextListData) v.getTag()).primary);
@@ -109,25 +110,20 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                 });
                 break;
             case 2:
-                final PersonListData personData = (PersonListData) itemList.get(position);
+                PersonListData personData = (PersonListData) itemList.get(position);
 
                 Glide.with(activity).load(personData.icon).into((ImageView) holder.v.findViewById(R.id.profile));
                 ((TextView) holder.v.findViewById(R.id.header)).setText(personData.name);
                 ((TextView) holder.v.findViewById(R.id.content)).setText(personData.content);
 
-                if (personData.url != null) {
-                    View card = holder.v.findViewById(R.id.card);
-                    card.setClickable(true);
-                    card.setTag(personData);
-                    card.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(personData.url)));
-                        }
-                    });
-                } else {
-                    holder.v.findViewById(R.id.card).setClickable(false);
-                }
+                View button = holder.v.findViewById(R.id.button);
+                button.setTag(personData);
+                button.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(((PersonListData) v.getTag()).url)));
+                    }
+                });
                 break;
         }
     }

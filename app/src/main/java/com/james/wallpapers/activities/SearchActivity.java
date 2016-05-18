@@ -55,5 +55,8 @@ public class SearchActivity extends AppCompatActivity {
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new SearchAdapter(SearchActivity.this);
         rv.setAdapter(adapter);
+
+        searchView.setIconified(false);
+        searchView.requestFocus();
     }
 }
