@@ -139,7 +139,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             holder.v.findViewById(R.id.apply).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Glide.with(activity).load(walls.get(holder.getAdapterPosition())).into(new SimpleTarget<GlideDrawable>() {
+                    Glide.with(activity).load(walls.get(holder.getAdapterPosition()).url).into(new SimpleTarget<GlideDrawable>() {
                         @Override
                         public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                             try {

@@ -24,10 +24,11 @@ import java.util.ArrayList;
 
 public class Supplier extends Application {
 
-    public void getNetworkResources() {
+    public boolean getNetworkResources() {
         //download any resources needed for the voids below while the splash screen is showing
         //yes, this is thread-safe
         //no, it is not needed for the current setup since all the resources are in res/values/strings.xml
+        return true;
     }
 
     //get a list of the different sections
