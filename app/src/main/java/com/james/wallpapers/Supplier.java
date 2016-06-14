@@ -2,16 +2,11 @@ package com.james.wallpapers;
 
 import android.app.Application;
 import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
@@ -125,12 +120,6 @@ public class Supplier extends Application {
         r.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         dm.enqueue(r);
-
-        ProgressDialog progressBarDialog = new ProgressDialog(context);
-        progressBarDialog.setTitle("Downloading...");
-        progressBarDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressBarDialog.setIndeterminate(true);
-        progressBarDialog.show();
     }
 
     public AlertDialog getDownloadedDialog(Context context, DialogInterface.OnClickListener onClickListener) {

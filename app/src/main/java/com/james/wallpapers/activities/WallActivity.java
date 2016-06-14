@@ -1,32 +1,26 @@
 package com.james.wallpapers.activities;
 
 import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.ColorStateList;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +31,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.james.wallpapers.R;
 import com.james.wallpapers.Supplier;
 import com.james.wallpapers.Utils;
-import com.james.wallpapers.adapters.ListAdapter;
-import com.james.wallpapers.adapters.SearchAdapter;
 import com.james.wallpapers.data.WallData;
 
 import java.io.IOException;
@@ -86,8 +78,6 @@ public class WallActivity extends AppCompatActivity {
         wall.setText(getTitle());
         auth.setText(data.authorName);
 
-        if(data.favorite) fab.setImageResource(R.drawable.fav_added);
-
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -107,10 +97,11 @@ public class WallActivity extends AppCompatActivity {
             }
         });
 
+        fab.setImageDrawable(VectorDrawableCompat.create(getResources(), data.favorite ? R.drawable.fav_added : R.drawable.fav_add, getTheme()));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fab.setImageResource(data.favorite ? R.drawable.fav_add : R.drawable.fav_added);
+                fab.setImageDrawable(VectorDrawableCompat.create(getResources(), data.favorite ? R.drawable.fav_add : R.drawable.fav_added, getTheme()));
                 data.setFavorite(WallActivity.this, !data.favorite);
             }
         });
@@ -122,12 +113,15 @@ public class WallActivity extends AppCompatActivity {
                     supplier.getCreditDialog(WallActivity.this, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
                             supplier.downloadWallpaper(WallActivity.this, data);
                             dialog.dismiss();
                         }
                     }).show();
+                } else {
+                    registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+                    supplier.downloadWallpaper(WallActivity.this, data);
                 }
-                else supplier.downloadWallpaper(WallActivity.this, data);
             }
         });
 
@@ -183,5 +177,15 @@ public class WallActivity extends AppCompatActivity {
                 unregisterReceiver(this);
             }
         };
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            unregisterReceiver(downloadReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

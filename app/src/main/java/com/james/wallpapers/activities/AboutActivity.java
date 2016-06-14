@@ -10,9 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.james.wallpapers.BuildConfig;
 import com.james.wallpapers.R;
 import com.james.wallpapers.Supplier;
 import com.james.wallpapers.adapters.AboutAdapter;
@@ -49,6 +47,8 @@ public class AboutActivity extends AppCompatActivity {
                 items.add(new PersonListData(data.image, data.name, data.description, data.url));
             }
         }
+
+        items.addAll(((Supplier) getApplicationContext()).getAdditionalInfo(this));
 
         String[] headers = getResources().getStringArray(R.array.namey);
         String[] contents = getResources().getStringArray(R.array.desc);

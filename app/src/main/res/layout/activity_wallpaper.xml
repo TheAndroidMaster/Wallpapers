@@ -75,7 +75,7 @@
                 <com.james.wallpapers.views.SquareImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_download"
+                    app:srcCompat="@drawable/ic_download"
                     android:layout_marginRight="8dp"
                     android:layout_marginEnd="8dp"
                     android:tint="@color/textColorPrimary" />
@@ -102,7 +102,7 @@
                 <com.james.wallpapers.views.SquareImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/social"
+                    app:srcCompat="@drawable/social"
                     android:layout_marginRight="8dp"
                     android:layout_marginEnd="8dp"
                     android:tint="@color/textColorPrimary" />
@@ -129,7 +129,7 @@
                 <com.james.wallpapers.views.SquareImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_wallpaper"
+                    app:srcCompat="@drawable/ic_wallpaper"
                     android:tint="@color/textColorPrimary"
                     android:layout_marginRight="8dp"
                     android:layout_marginEnd="8dp"/>
@@ -166,7 +166,6 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/fav_add"
         android:layout_margin="16dp"
         app:layout_anchor="@id/back"
         app:layout_anchorGravity="top|end"/>

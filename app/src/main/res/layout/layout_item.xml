@@ -48,4 +48,5 @@
         android:layout_alignRight="@id/image"
         android:layout_alignEnd="@id/image"
         android:layout_alignTop="@id/image" />
+
 </RelativeLayout>

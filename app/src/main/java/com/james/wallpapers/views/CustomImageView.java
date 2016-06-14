@@ -5,14 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.media.ThumbnailUtils;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.james.wallpapers.Utils;
 
-public class CustomImageView extends ImageView {
+public class CustomImageView extends AppCompatImageView {
 
     public CustomImageView(Context context) {
         super(context);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,12 +22,12 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.james.wallpapers.R;
-import com.james.wallpapers.Utils;
-import com.james.wallpapers.views.CustomImageView;
-import com.james.wallpapers.views.SquareImageView;
 import com.james.wallpapers.Supplier;
+import com.james.wallpapers.Utils;
 import com.james.wallpapers.activities.WallActivity;
 import com.james.wallpapers.data.WallData;
+import com.james.wallpapers.views.CustomImageView;
+import com.james.wallpapers.views.SquareImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -127,11 +128,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             });
 
             CustomImageView fav = (CustomImageView) holder.v.findViewById(R.id.fav);
-            if (walls.get(position).favorite) fav.setImageResource(R.drawable.fav_added);
+            if (walls.get(position).favorite)
+                fav.setImageDrawable(VectorDrawableCompat.create(activity.getResources(), R.drawable.fav_added, activity.getTheme()));
             fav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((ImageView) v).setImageResource(walls.get(holder.getAdapterPosition()).favorite ? R.drawable.fav_add : R.drawable.fav_added);
+                    ((ImageView) v).setImageDrawable(VectorDrawableCompat.create(activity.getResources(), walls.get(holder.getAdapterPosition()).favorite ? R.drawable.fav_add : R.drawable.fav_added, activity.getTheme()));
                     walls.get(holder.getAdapterPosition()).setFavorite(activity, !walls.get(holder.getAdapterPosition()).favorite);
                 }
             });
