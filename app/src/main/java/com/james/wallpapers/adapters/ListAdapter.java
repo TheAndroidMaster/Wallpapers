@@ -1,14 +1,18 @@
 package com.james.wallpapers.adapters;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,7 +122,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                         supplier.getCreditDialog(activity, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                supplier.downloadWallpaper(activity, walls.get(holder.getAdapterPosition()));
+                                supplier.shareWallpaper(activity, walls.get(holder.getAdapterPosition()));
                                 dialog.dismiss();
                             }
                         }).show();
@@ -144,13 +148,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                     Glide.with(activity).load(walls.get(holder.getAdapterPosition()).url).into(new SimpleTarget<GlideDrawable>() {
                         @Override
                         public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                            try {
-                                WallpaperManager.getInstance(activity).setBitmap(Utils.drawableToBitmap(resource));
-                                Toast.makeText(activity, R.string.set_wallpaper_success, Toast.LENGTH_SHORT).show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                                Toast.makeText(activity, R.string.set_wallpaper_failed, Toast.LENGTH_SHORT).show();
-                            }
+                            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.SET_WALLPAPER) == PackageManager.PERMISSION_GRANTED) {
+                                try {
+                                    WallpaperManager.getInstance(activity).setBitmap(Utils.drawableToBitmap(resource));
+                                    Toast.makeText(activity, R.string.set_wallpaper_success, Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(activity, R.string.set_wallpaper_failed, Toast.LENGTH_SHORT).show();
+                                }
+                            } else
+                                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SET_WALLPAPER}, 0);
                         }
 
                         @Override

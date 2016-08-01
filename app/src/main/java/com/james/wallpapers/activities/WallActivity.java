@@ -1,5 +1,6 @@
 package com.james.wallpapers.activities;
 
+import android.Manifest;
 import android.app.DownloadManager;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
@@ -7,13 +8,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -114,13 +119,22 @@ public class WallActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-                            supplier.downloadWallpaper(WallActivity.this, data);
+
+                            if (ContextCompat.checkSelfPermission(WallActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+                                supplier.downloadWallpaper(WallActivity.this, data);
+                            else
+                                ActivityCompat.requestPermissions(WallActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 8027);
+
                             dialog.dismiss();
                         }
                     }).show();
                 } else {
                     registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-                    supplier.downloadWallpaper(WallActivity.this, data);
+
+                    if (ContextCompat.checkSelfPermission(WallActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+                        supplier.downloadWallpaper(WallActivity.this, data);
+                    else
+                        ActivityCompat.requestPermissions(WallActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 8027);
                 }
             }
         });
@@ -147,13 +161,16 @@ public class WallActivity extends AppCompatActivity {
                 Glide.with(WallActivity.this).load(data.url).into(new SimpleTarget<GlideDrawable>() {
                     @Override
                     public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        try {
-                            WallpaperManager.getInstance(WallActivity.this).setBitmap(Utils.drawableToBitmap(resource));
-                            Toast.makeText(WallActivity.this, R.string.set_wallpaper_success, Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            Toast.makeText(WallActivity.this, R.string.set_wallpaper_failed, Toast.LENGTH_SHORT).show();
-                        }
+                        if (ContextCompat.checkSelfPermission(WallActivity.this, Manifest.permission.SET_WALLPAPER) == PackageManager.PERMISSION_GRANTED) {
+                            try {
+                                WallpaperManager.getInstance(WallActivity.this).setBitmap(Utils.drawableToBitmap(resource));
+                                Toast.makeText(WallActivity.this, R.string.set_wallpaper_success, Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                Toast.makeText(WallActivity.this, R.string.set_wallpaper_failed, Toast.LENGTH_SHORT).show();
+                            }
+                        } else
+                            ActivityCompat.requestPermissions(WallActivity.this, new String[]{Manifest.permission.SET_WALLPAPER}, 9274);
                     }
 
                     @Override
@@ -186,6 +203,23 @@ public class WallActivity extends AppCompatActivity {
             unregisterReceiver(downloadReceiver);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int grantResult : grantResults) {
+            if (grantResult != PackageManager.PERMISSION_GRANTED) return;
+        }
+
+        switch (requestCode) {
+            case 8027:
+                download.callOnClick();
+                break;
+            case 9274:
+                apply.callOnClick();
+                break;
         }
     }
 }

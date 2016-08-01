@@ -1,8 +1,13 @@
 package com.james.wallpapers.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -16,6 +21,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
+            loadStuff();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 2746);
+        }
+    }
+
+    private void loadStuff() {
         new Thread() {
             @Override
             public void run() {
@@ -43,5 +56,13 @@ public class SplashActivity extends AppCompatActivity {
                 });
             }
         }.start();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 2746 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            loadStuff();
+        else finish();
     }
 }
