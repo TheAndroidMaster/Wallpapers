@@ -98,7 +98,7 @@ public class Supplier extends Application {
 
         //specify title (optional), description (optional), whether to center the content, and a url (optional)
         headers.add(new HeaderListData(null, "Thanks to Justin Kruit for letting me rent his server to load all these wallpapers, which take up more than 3GB of space.", false, "http://justinkruit.nl/me/"));
-        headers.add(new HeaderListData(null, "Also thanks to Jared Gauthier for making Fornax's amazing icons! (you can swipe between them at the top of this page)", false, "https://plus.google.com/+JaredGauthier"));
+        headers.add(new HeaderListData(null, "Also thanks to Jared Gauthier for making Fornax's amazing icon!", false, "https://plus.google.com/+JaredGauthier"));
 
         return headers;
     }

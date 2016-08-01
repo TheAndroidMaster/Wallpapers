@@ -2,7 +2,8 @@ package com.james.wallpapers.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.james.wallpapers.activities.MainActivity;
 import com.james.wallpapers.R;
 import com.james.wallpapers.Supplier;
+import com.james.wallpapers.activities.MainActivity;
 import com.james.wallpapers.activities.WallActivity;
 import com.james.wallpapers.data.AuthorData;
 import com.james.wallpapers.data.WallData;
@@ -64,17 +65,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         TextView title = (TextView) holder.title, subtitle = (TextView) holder.subtitle;
 
         if (getItemViewType(position) == 0) {
-            holder.card.setBackgroundColor(Color.TRANSPARENT);
             title.setText(walls.get(position).name);
+            title.setTypeface(null, Typeface.NORMAL);
+            title.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.textColorPrimaryInverse)));
             subtitle.setText(walls.get(position).authorName);
-            title.setTextColor(ContextCompat.getColor(activity, R.color.textColorPrimaryInverse));
-            subtitle.setTextColor(ContextCompat.getColor(activity, R.color.textColorSecondaryInverse));
         } else {
-            holder.card.setBackgroundColor(ContextCompat.getColor(activity, R.color.colorAccent));
             title.setText(authors.get(position - walls.size()).name);
-            subtitle.setText("Designer");
-            title.setTextColor(ContextCompat.getColor(activity, R.color.textColorPrimary));
-            subtitle.setTextColor(ContextCompat.getColor(activity, R.color.textColorSecondary));
+            title.setTypeface(null, Typeface.BOLD);
+            title.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.colorAccent)));
+            subtitle.setText(null);
         }
 
         holder.clicker.setTag(position);
@@ -107,8 +106,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             if (data.name.toLowerCase().contains(filter.toLowerCase()) || filter.toLowerCase().contains(data.name.toLowerCase())) walls.add(data);
         }
 
-        for (AuthorData data : totalAuthors) {
-            if (data.name.toLowerCase().contains(filter.toLowerCase()) || filter.toLowerCase().contains(data.name.toLowerCase())) authors.add(data);
+        if (activity.getResources().getBoolean(R.bool.show_contributors)) {
+            for (AuthorData data : totalAuthors) {
+                if (data.name.toLowerCase().contains(filter.toLowerCase()) || filter.toLowerCase().contains(data.name.toLowerCase()))
+                    authors.add(data);
+            }
         }
 
         notifyDataSetChanged();
