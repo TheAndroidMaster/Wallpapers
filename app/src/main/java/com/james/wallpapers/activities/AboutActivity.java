@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.james.wallpapers.R;
@@ -62,12 +61,6 @@ public class AboutActivity extends AppCompatActivity {
 
         recycler.setLayoutManager(new GridLayoutManager(this, 1) );
         recycler.setAdapter(new AboutAdapter(this, items));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_about, menu);
-        return true;
     }
 
     @Override

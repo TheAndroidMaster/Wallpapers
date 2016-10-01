@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean("first", true)) {
-            startActivity(new Intent(MainActivity.this, FirstTime.class));
-            prefs.edit().putBoolean("first", false).apply();
-        }
 
         if (prefs.getInt("version", 0) != BuildConfig.VERSION_CODE) {
             new AlertDialog.Builder(this).setTitle("Changelog").setMessage(getString(R.string.changelog)).setPositiveButton("Ok", new DialogInterface.OnClickListener() {

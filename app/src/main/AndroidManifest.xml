@@ -61,8 +61,6 @@
                 android:value=".activities.MainActivity" />
         </activity>
 
-        <activity android:name=".activities.FirstTime"/>
-
         <service android:name=".MuzeiArtSource"
             android:icon="@drawable/muzeiartwork"
             android:label="@string/app_name"
