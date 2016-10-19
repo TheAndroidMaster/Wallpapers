@@ -61,7 +61,7 @@ public class Supplier extends Application {
 
             for (int i2 = 0; i2 < names.length; i2++) {
                 //specify context, wallpaper name, wallpaper url, author name, author id, and whether credit is required (see values/strings.xml for more info)
-                walls.add(new WallData(context, names[i2].replace("*", ""), urls[i2], authorNames[i], i, names[i].endsWith("*")));
+                walls.add(new WallData(context, names[i2].replace("*", ""), urls[i2], authorNames[i], i, names[i2].endsWith("*")));
             }
         }
 
