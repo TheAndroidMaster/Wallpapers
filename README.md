@@ -1,5 +1,10 @@
 # Wallpapers
 
+**THIS PROJECT IS OLD AND USELESS**
+
+Please don't use it. Ever. It has issues.
+I haven't worked on this for absolutely ages. The only reason it still exists is as a comparison to demonstrate my progress. If you are looking for a functional wallpaper dashboard for whatever reason, I suggest using [Frames](https://github.com/jahirfiquitiva/Frames), since it is a lot more recent, significantly more stable, and has more features.
+
 ## License
 
 ```
